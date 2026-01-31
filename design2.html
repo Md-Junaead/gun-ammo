@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAC-OPS PRO | Premier Firearms & Ammo</title>
+
+    <!-- Fonts: Teko for headers (Tactical feel), Rajdhani for tech details, Inter for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Rajdhani:wght@500;700&family=Teko:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CORE VARIABLES & RESET --- */
+        :root {
+            --bg-deep: #0a0c10;
+            --bg-card: #15171e;
+            --bg-glass: rgba(21, 23, 30, 0.85);
+
+            --accent-primary: #fca311;
+            /* Safety Orange/Gold */
+            --accent-hover: #e5920d;
+            --accent-glow: rgba(252, 163, 17, 0.4);
+
+            --text-main: #e0e0e0;
+            --text-muted: #8d99ae;
+
+            --border-color: #2a2d36;
+
+            --transition-fast: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-bounce: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Teko', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition-fast);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            width: 100%;
+            display: block;
+        }
+
+        /* --- SCROLL ANIMATION CLASS --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- UTILITIES --- */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 30px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition-fast);
+        }
+
+        .btn-primary {
+            background-color: var(--accent-primary);
+            color: #000;
+            clip-path: polygon(10% 0, 100% 0, 100% 80%, 90% 100%, 0 100%, 0 20%);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: 0.5s;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent-primary);
+            color: var(--accent-primary);
+            clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+        }
+
+        .btn-outline:hover {
+            background: var(--accent-primary);
+            color: #000;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .section-header span {
+            color: var(--accent-primary);
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        /* --- HEADER & NAV --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: var(--transition-fast);
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+            background: var(--bg-glass);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Teko', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--accent-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--accent-primary);
+            transition: var(--transition-fast);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 25px;
+            font-size: 1.2rem;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background: var(--accent-primary);
+            color: #000;
+            font-size: 0.7rem;
+            font-weight: bold;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            margin-bottom: 80px;
+        }
+
+        /* Parallax background effect simulated */
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(10, 12, 16, 0.9), rgba(10, 12, 16, 0.4)), url('https://picsum.photos/seed/tactical_dark/1920/1080');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding-left: 5%;
+        }
+
+        .hero h1 {
+            font-size: 5.5rem;
+            line-height: 0.9;
+            margin-bottom: 20px;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 600px;
+            border-left: 3px solid var(--accent-primary);
+            padding-left: 20px;
+        }
+
+        /* --- STATS BAR --- */
+        .stats-bar {
+            background: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 30px 0;
+            margin-bottom: 80px;
+        }
+
+        .stats-grid {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: var(--accent-primary);
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            font-family: 'Rajdhani', sans-serif;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+        }
+
+        /* --- CATEGORIES (TACTICAL STYLE) --- */
+        .categories {
+            padding-bottom: 80px;
+        }
+
+        .cat-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .cat-card {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 4px;
+            cursor: pointer;
+            group: isolate;
+        }
+
+        .cat-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            filter: grayscale(80%);
+        }
+
+        .cat-card:hover img {
+            transform: scale(1.1);
+            filter: grayscale(0%);
+        }
+
+        .cat-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(to top, #000, transparent);
+            transform: translateY(10px);
+            transition: 0.3s;
+        }
+
+        .cat-card:hover .cat-overlay {
+            transform: translateY(0);
+        }
+
+        .cat-card h3 {
+            font-size: 1.8rem;
+            color: #fff;
+        }
+
+        .cat-card span {
+            color: var(--accent-primary);
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        /* --- FEATURED PRODUCTS (Cards) --- */
+        .products {
+            padding-bottom: 100px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: var(--transition-fast);
+            position: relative;
+        }
+
+        .product-card:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--accent-primary);
+            color: #000;
+            padding: 4px 10px;
+            font-weight: 700;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.8rem;
+            z-index: 2;
+            clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        .p-img-box {
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .p-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .product-card:hover .p-img-box img {
+            transform: scale(1.05);
+        }
+
+        /* Quick view overlay on hover */
+        .quick-actions {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            transition: 0.3s;
+        }
+
+        .product-card:hover .quick-actions {
+            bottom: 0;
+        }
+
+        .action-btn {
+            width: 40px;
+            height: 40px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .action-btn:hover {
+            background: var(--accent-primary);
+        }
+
+        .p-details {
+            padding: 20px;
+        }
+
+        .p-cat {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .p-title {
+            font-size: 1.4rem;
+            color: #fff;
+            margin: 5px 0 10px;
+        }
+
+        .p-price {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #555;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        /* --- FOOTER & CONTACT --- */
+        footer {
+            background: #050505;
+            padding-top: 80px;
+            border-top: 2px solid var(--accent-primary);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+        }
+
+        .footer-col p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-primary);
+            padding-left: 5px;
+        }
+
+        .contact-info li {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            color: var(--text-muted);
+        }
+
+        .contact-info i {
+            color: var(--accent-primary);
+            margin-top: 5px;
+        }
+
+        .address-box {
+            background: var(--bg-card);
+            padding: 20px;
+            border-left: 3px solid var(--accent-primary);
+            margin-top: 10px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding: 30px 0;
+            color: #444;
+            font-size: 0.9rem;
+        }
+
+        /* --- TOAST NOTIFICATION --- */
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: var(--accent-primary);
+            color: #000;
+            text-align: center;
+            border-radius: 2px;
+            padding: 16px;
+            position: fixed;
+            z-index: 2000;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-weight: 700;
+            font-family: 'Rajdhani', sans-serif;
+            text-transform: uppercase;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s, bottom 0.3s;
+        }
+
+        #toast.show {
+            visibility: visible;
+            opacity: 1;
+            bottom: 50px;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 4rem;
+            }
+
+            .cat-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            /* Simplified for demo */
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .stats-grid {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .cat-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Toast Notification -->
+    <div id="toast">Item Added to Cart <i class="fa-solid fa-check"></i></div>
+
+    <!-- Navigation -->
+    <header id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-crosshairs"></i> TAC-OPS PRO
+            </a>
+
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#categories">Armory</a></li>
+                    <li><a href="#new-arrivals">New Arrivals</a></li>
+                    <li><a href="#brands">Brands</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <i class="fa-solid fa-magnifying-glass" style="cursor: pointer;"></i>
+                <div class="cart-icon" onclick="showToast()">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-badge">0</span>
+                </div>
+                <i class="fa-solid fa-bars" style="display: none; cursor: pointer;" id="mobile-menu-btn"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-bg"></div>
+            <div class="container hero-content">
+                <h1 class="reveal">DEFEND YOUR<br><span style="color: var(--accent-primary);">LEGACY</span></h1>
+                <p class="reveal">Precision engineering meets tactical superiority. The premier destination for
+                    firearms, ammunition, and gear in Euless, Texas.</p>
+                <div class="reveal">
+                    <button class="btn btn-primary" onclick="scrollToSection('new-arrivals')">Shop Arsenal</button>
+                    <button class="btn btn-outline" style="margin-left: 15px;">View Catalog</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats / Trust Bar -->
+        <div class="stats-bar reveal">
+            <div class="container stats-grid">
+                <div class="stat-item">
+                    <h3>20K+</h3>
+                    <p>Firearms Sold</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>Authentic Gear</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24/7</h3>
+                    <p>Expert Support</p>
+                </div>
+                <div class="stat-item">
+                    <h3>TX</h3>
+                    <p>Local Owned</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Categories -->
+        <section id="categories" class="categories">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span>TACTICAL DIVISION</span>
+                    <h2>Select Category</h2>
+                    <div style="width: 60px; height: 3px; background: var(--accent-primary); margin: 0 auto;"></div>
+                </div>
+
+                <div class="cat-grid">
+                    <article class="cat-card reveal">
+                        <img src="https://picsum.photos/seed/handgun/600/600" alt="Handguns">
+                        <div class="cat-overlay">
+                            <span>Semi-Auto</span>
+                            <h3>Handguns</h3>
+                        </div>
+                    </article>
+                    <article class="cat-card reveal">
+                        <img src="https://picsum.photos/seed/rifle/600/600" alt="Rifles">
+                        <div class="cat-overlay">
+                            <span>Long Range</span>
+                            <h3>Rifles</h3>
+                        </div>
+                    </article>
+                    <article class="cat-card reveal">
+                        <img src="https://picsum.photos/seed/shotgun/600/600" alt="Shotguns">
+                        <div class="cat-overlay">
+                            <span>Home Defense</span>
+                            <h3>Shotguns</h3>
+                        </div>
+                    </article>
+                    <article class="cat-card reveal">
+                        <img src="https://picsum.photos/seed/ammo/600/600" alt="Ammo">
+                        <div class="cat-overlay">
+                            <span>Bulk Supply</span>
+                            <h3>Ammunition</h3>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products -->
+        <section id="new-arrivals" class="products">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span>JUST LANDED</span>
+                    <h2>New Arrivals</h2>
+                </div>
+
+                <div class="product-grid">
+                    <!-- Product 1 -->
+                    <article class="product-card reveal">
+                        <div class="badge">HOT</div>
+                        <div class="p-img-box">
+                            <img src="https://picsum.photos/seed/glock/400/400" alt="Pistol">
+                            <div class="quick-actions">
+                                <div class="action-btn" title="Quick View"><i class="fa-regular fa-eye"></i></div>
+                                <div class="action-btn" title="Add to Wishlist"><i class="fa-regular fa-heart"></i>
+                                </div>
+                                <div class="action-btn" title="Add to Cart" onclick="showToast()"><i
+                                        class="fa-solid fa-cart-plus"></i></div>
+                            </div>
+                        </div>
+                        <div class="p-details">
+                            <span class="p-cat">Handguns</span>
+                            <h3 class="p-title">Glock 19 Gen5 MOS</h3>
+                            <div class="p-price">
+                                <span>$599.99</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Product 2 -->
+                    <article class="product-card reveal">
+                        <div class="p-img-box">
+                            <img src="https://picsum.photos/seed/ar15/400/400" alt="Rifle">
+                            <div class="quick-actions">
+                                <div class="action-btn"><i class="fa-regular fa-eye"></i></div>
+                                <div class="action-btn"><i class="fa-regular fa-heart"></i></div>
+                                <div class="action-btn" onclick="showToast()"><i class="fa-solid fa-cart-plus"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-details">
+                            <span class="p-cat">Rifles</span>
+                            <h3 class="p-title">Daniel Defense DDM4 V7</h3>
+                            <div class="p-price">
+                                <span>$1,899.00</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Product 3 -->
+                    <article class="product-card reveal">
+                        <div class="badge" style="background: #333; color: #fff;">SALE</div>
+                        <div class="p-img-box">
+                            <img src="https://picsum.photos/seed/benelli/400/400" alt="Shotgun">
+                            <div class="quick-actions">
+                                <div class="action-btn"><i class="fa-regular fa-eye"></i></div>
+                                <div class="action-btn"><i class="fa-regular fa-heart"></i></div>
+                                <div class="action-btn" onclick="showToast()"><i class="fa-solid fa-cart-plus"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-details">
+                            <span class="p-cat">Shotguns</span>
+                            <h3 class="p-title">Benelli M4 Tactical</h3>
+                            <div class="p-price">
+                                <span>$1,799.00</span>
+                                <span class="old-price">$1,999.00</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Product 4 -->
+                    <article class="product-card reveal">
+                        <div class="p-img-box">
+                            <img src="https://picsum.photos/seed/optics/400/400" alt="Optics">
+                            <div class="quick-actions">
+                                <div class="action-btn"><i class="fa-regular fa-eye"></i></div>
+                                <div class="action-btn"><i class="fa-regular fa-heart"></i></div>
+                                <div class="action-btn" onclick="showToast()"><i class="fa-solid fa-cart-plus"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-details">
+                            <span class="p-cat">Optics</span>
+                            <h3 class="p-title">Trijicon ACOG 4x32</h3>
+                            <div class="p-price">
+                                <span>$1,200.00</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div style="text-align: center; margin-top: 50px;">
+                    <button class="btn btn-outline">Load More Arsenal</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Brand Info -->
+                <div class="footer-col">
+                    <a href="#" class="logo" style="margin-bottom: 20px;">
+                        <i class="fa-solid fa-crosshairs"></i> TAC-OPS PRO
+                    </a>
+                    <p>Your premier source for high-quality firearms and ammunition in the heart of Texas. Committed to
+                        safety, precision, and the rights of responsible owners.</p>
+                    <div class="social-icons" style="font-size: 1.5rem; display: flex; gap: 15px;">
+                        <a href="#" style="color: #fff;"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" style="color: #fff;"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" style="color: #fff;"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-col">
+                    <h4>Explore</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Firearms</a></li>
+                        <li><a href="#">Ammunition</a></li>
+                        <li><a href="#">Gear & Accessories</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+
+                <!-- Customer Service -->
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Order Status</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">FFL Locator</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info (Specific Address) -->
+                <div class="footer-col">
+                    <h4>Visit Our Store</h4>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fa-solid fa-location-dot"></i>
+                            <div class="address-box">
+                                1200 W Euless Blvd<br>
+                                Euless, TX 76040, USA
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-phone"></i>
+                            <span>(817) 555-0123</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>sales@tacopspro.com</span>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-clock"></i>
+                            <span>Mon-Sat: 10AM - 8PM<br>Sun: 12PM - 6PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2024 TAC-OPS PRO. All Rights Reserved. Federal Firearm License Holder.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- Sticky Header Animation ---
+        window.addEventListener('scroll', function () {
+            const header = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // --- Scroll Reveal Animation (Intersection Observer) ---
+        const observerOptions = {
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // --- Smooth Scroll to Section ---
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // --- Toast Notification Logic ---
+        function showToast() {
+            const toast = document.getElementById("toast");
+            toast.className = "show";
+            setTimeout(function () { toast.className = toast.className.replace("show", ""); }, 3000);
+
+            // Update cart badge purely for visual feedback
+            const badge = document.querySelector('.cart-badge');
+            let count = parseInt(badge.innerText);
+            badge.innerText = count + 1;
+        }
+    </script>
+</body>
+
+</html>

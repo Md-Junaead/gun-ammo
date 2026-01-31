@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GunAmmoShop | Premier Firearms in Euless, TX</title>
+
+    <!-- Fonts: Black Ops One for Logo, Rajdhani for Menu/Tech, Roboto for Body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Rajdhani:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CORE VARIABLES --- */
+        :root {
+            --bg-dark: #080808;
+            --bg-panel: #141414;
+            --bg-light: #1f1f1f;
+
+            --accent-primary: #e65100;
+            /* Deep Orange */
+            --accent-highlight: #ff9100;
+            /* Bright Orange */
+            --accent-alert: #d50000;
+            /* Red */
+
+            --text-white: #ffffff;
+            --text-gray: #9e9e9e;
+
+            --border-glow: 1px solid rgba(230, 81, 0, 0.3);
+
+            --font-logo: 'Black Ops One', cursive;
+            --font-nav: 'Rajdhani', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* --- TOP STRIP --- */
+        .top-strip {
+            background: #000;
+            border-bottom: 1px solid #333;
+            padding: 8px 0;
+            font-family: var(--font-nav);
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+
+        .top-strip .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        /* --- NAVIGATION BAR --- */
+        nav {
+            background: rgba(20, 20, 20, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #333;
+            padding: 0 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .logo {
+            font-family: var(--font-logo);
+            font-size: 2rem;
+            letter-spacing: 1px;
+            color: var(--text-white);
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--accent-primary);
+        }
+
+        /* Expanded Menu List */
+        .nav-menu {
+            display: flex;
+            gap: 5px;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu a {
+            font-family: var(--font-nav);
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            padding: 10px 12px;
+            color: var(--text-gray);
+            display: block;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--accent-highlight);
+            background: rgba(255, 145, 0, 0.05);
+            border-bottom: 2px solid var(--accent-primary);
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-icons i {
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--text-white);
+            transition: 0.2s;
+        }
+
+        .nav-icons i:hover {
+            color: var(--accent-highlight);
+        }
+
+        .cart-badge {
+            font-size: 0.8rem;
+            color: var(--accent-primary);
+        }
+
+        /* --- NEWS TICKER --- */
+        .ticker-wrap {
+            background: var(--accent-alert);
+            color: white;
+            font-family: var(--font-nav);
+            font-weight: 700;
+            text-transform: uppercase;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .ticker-move {
+            display: inline-block;
+            padding-left: 100%;
+            animation: ticker 25s linear infinite;
+        }
+
+        .ticker-item {
+            display: inline-block;
+            padding: 0 2rem;
+        }
+
+        @keyframes ticker {
+            0% {
+                transform: translate3d(0, 0, 0);
+            }
+
+            100% {
+                transform: translate3d(-100%, 0, 0);
+            }
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            height: 85vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Dark tactical soldier image */
+            background: linear-gradient(90deg, rgba(8, 8, 8, 0.95) 0%, rgba(8, 8, 8, 0.6) 50%, rgba(8, 8, 8, 0.2) 100%),
+                url('https://images.unsplash.com/photo-1542259659583-08c4252383a5?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            margin-left: 5%;
+        }
+
+        .hero h1 {
+            font-family: var(--font-logo);
+            font-size: 4rem;
+            line-height: 1;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            color: white;
+        }
+
+        .hero h1 span {
+            color: var(--accent-highlight);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 30px;
+            border-left: 4px solid var(--accent-primary);
+            padding-left: 20px;
+        }
+
+        .btn-main {
+            background: var(--accent-primary);
+            color: white;
+            padding: 15px 35px;
+            font-family: var(--font-nav);
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
+            transition: 0.3s;
+        }
+
+        .btn-main:hover {
+            background: var(--accent-highlight);
+            transform: translateX(10px);
+        }
+
+        /* --- CATEGORIES GRID --- */
+        .section-box {
+            padding: 80px 0;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .section-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 15px;
+        }
+
+        .section-head h2 {
+            font-family: var(--font-nav);
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            color: white;
+        }
+
+        .section-head a {
+            color: var(--accent-primary);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .cat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .cat-card {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            border: 1px solid #333;
+            group: isolate;
+        }
+
+        .cat-card img {
+            transition: 0.5s;
+            filter: grayscale(100%);
+        }
+
+        .cat-card:hover img {
+            transform: scale(1.1);
+            filter: grayscale(0%);
+        }
+
+        .cat-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, #000 0%, transparent 100%);
+            padding: 20px;
+            z-index: 2;
+        }
+
+        .cat-overlay h3 {
+            font-family: var(--font-nav);
+            font-size: 1.8rem;
+            color: var(--accent-highlight);
+            text-transform: uppercase;
+        }
+
+        /* --- SERVICES (New) --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background: var(--bg-panel);
+            padding: 40px;
+            border: 1px solid #333;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .service-card:hover {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 15px rgba(230, 81, 0, 0.2);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: var(--accent-primary);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-family: var(--font-nav);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* --- NEW ARRIVALS --- */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--bg-panel);
+            border: 1px solid #333;
+        }
+
+        .p-img {
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .p-img img {
+            transition: 0.5s;
+        }
+
+        .product-card:hover .p-img img {
+            transform: scale(1.1);
+        }
+
+        .tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--accent-alert);
+            color: white;
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .p-info {
+            padding: 20px;
+        }
+
+        .p-title {
+            font-family: var(--font-nav);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .p-price {
+            color: var(--accent-highlight);
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .add-btn {
+            width: 100%;
+            margin-top: 15px;
+            padding: 12px;
+            background: transparent;
+            border: 1px solid var(--text-gray);
+            color: var(--text-white);
+            text-transform: uppercase;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .add-btn:hover {
+            background: var(--text-white);
+            color: #000;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #000;
+            border-top: 4px solid var(--accent-primary);
+            padding: 80px 0 20px;
+            margin-top: 80px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .f-col h4 {
+            font-family: var(--font-nav);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .f-col p {
+            color: var(--text-gray);
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .f-col ul li {
+            margin-bottom: 10px;
+            color: var(--text-gray);
+        }
+
+        .f-col ul li:hover {
+            color: var(--accent-highlight);
+            padding-left: 5px;
+        }
+
+        .address-box {
+            background: var(--bg-light);
+            padding: 20px;
+            border-left: 3px solid var(--accent-primary);
+        }
+
+        /* --- MOBILE --- */
+        @media (max-width: 1200px) {
+            .nav-menu {
+                display: none;
+            }
+
+            /* Simplified for mobile demo */
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Info Strip -->
+    <div class="top-strip">
+        <div class="container">
+            <span><i class="fa-solid fa-location-dot"></i> 1200 W Euless Blvd, Euless, TX 76040</span>
+            <span><i class="fa-solid fa-phone"></i> (817) 555-0123</span>
+            <span><i class="fa-solid fa-clock"></i> Mon-Sat: 10AM - 9PM</span>
+        </div>
+    </div>
+
+    <!-- Navigation Bar (Expanded) -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">Gun<span>Ammo</span>Shop</a>
+
+            <ul class="nav-menu">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">Handguns</a></li>
+                <li><a href="#">Rifles</a></li>
+                <li><a href="#">Shotguns</a></li>
+                <li><a href="#">Ammunition</a></li>
+                <li><a href="#">Optics & Gear</a></li>
+                <li><a href="#">Class 3 / NFA</a></li>
+                <li><a href="#">Gunsmithing</a></li>
+                <li><a href="#">Brands</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+
+            <div class="nav-icons">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <i class="fa-regular fa-user"></i>
+                <div style="position: relative;">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-badge">0</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- News Ticker -->
+    <div class="ticker-wrap">
+        <div class="ticker-move">
+            <div class="ticker-item">🔥 FLASH SALE: 15% OFF ALL 9MM AMMUNITION</div>
+            <div class="ticker-item">NEW GLOCK GEN 5 SHIPMENT ARRIVED</div>
+            <div class="ticker-item">FREE FFL TRANSFERS FOR LOCAL CUSTOMERS</div>
+            <div class="ticker-item">VISIT US AT 1200 W EULESS BLVD, EULESS, TX 76040</div>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-bg"></div>
+            <div class="hero-content">
+                <h1>Precision <span>Firearms</span><br>Unlimited <span>Ammo</span></h1>
+                <p>The premier destination in Euless, TX for high-quality firearms, tactical ammunition, and
+                    professional gunsmithing services.</p>
+                <button class="btn-main">Shop Inventory</button>
+            </div>
+        </section>
+
+        <!-- Our Categories -->
+        <section class="section-box">
+            <div class="section-head">
+                <h2>Our Categories</h2>
+                <a href="#">View All <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="cat-grid">
+                <div class="cat-card">
+                    <img src="https://gunammoshop.com/wp-content/uploads/2026/01/Rifles-Firearms.webp" alt="Handguns">
+                    <div class="cat-overlay">
+                        <h3>Handguns</h3>
+                    </div>
+                </div>
+                <div class="cat-card">
+                    <img src="https://gunammoshop.com/wp-content/uploads/2026/01/Rifles-Firearms.webp" alt="Rifles">
+                    <div class="cat-overlay">
+                        <h3>Rifles</h3>
+                    </div>
+                </div>
+                <div class="cat-card">
+                    <img src="https://gunammoshop.com/wp-content/uploads/2026/01/Rifles-Firearms.webp" alt="Shotguns">
+                    <div class="cat-overlay">
+                        <h3>Shotguns</h3>
+                    </div>
+                </div>
+                <div class="cat-card">
+                    <img src="https://gunammoshop.com/wp-content/uploads/2026/01/Rifles-Firearms.webp" alt="Ammunition">
+                    <div class="cat-overlay">
+                        <h3>Ammunition</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="section-box" style="background: #0f0f0f;">
+            <div class="section-head">
+                <h2>Our Services</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                    <h3>Expert Gunsmithing</h3>
+                    <p>Professional cleaning, repair, and customization by certified armorers.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fa-solid fa-file-contract"></i>
+                    <h3>FFL Transfers</h3>
+                    <p>Fast and reliable transfer services for your online purchases.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <h3>Concealed Carry</h3>
+                    <p>LTC classes and certification courses available on-site.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Arrivals -->
+        <section class="section-box">
+            <div class="section-head">
+                <h2>New Arrivals</h2>
+                <a href="#">View All <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="p-img">
+                        <span class="tag">New</span>
+                        <img src="https://gunammoshop.com/wp-content/uploads/2026/01/Rifles-Firearms.webp" alt="Glock">
+                    </div>
+                    <div class="p-info">
+                        <div class="p-title">Glock 19 Gen 5 MOS</div>
+                        <div class="p-price">$599.00</div>
+                        <button class="add-btn">Add to Cart</button>
+                    </div>
+                </div>
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="p-img">
+                        <span class="tag">-10%</span>
+                        <img src="https://gunammoshop.com/wp-content/uploads/2026/01/Rifles-Firearms.webp" alt="Rifle">
+                    </div>
+                    <div class="p-info">
+                        <div class="p-title">Daniel Defense V7</div>
+                        <div class="p-price">$1,799.00</div>
+                        <button class="add-btn">Add to Cart</button>
+                    </div>
+                </div>
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="p-img">
+                        <img src="https://gunammoshop.com/wp-content/uploads/2026/01/Rifles-Firearms.webp" alt="Ammo">
+                    </div>
+                    <div class="p-info">
+                        <div class="p-title">Federal 9mm 1000rd</div>
+                        <div class="p-price">$289.99</div>
+                        <button class="add-btn">Add to Cart</button>
+                    </div>
+                </div>
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="p-img">
+                        <img src="https://gunammoshop.com/wp-content/uploads/2026/01/Rifles-Firearms.webp" alt="Optic">
+                    </div>
+                    <div class="p-info">
+                        <div class="p-title">Trijicon ACOG 4x32</div>
+                        <div class="p-price">$1,150.00</div>
+                        <button class="add-btn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="f-col">
+                <a href="#" class="logo" style="margin-bottom: 20px; display:block;">Gun<span>Ammo</span>Shop</a>
+                <p>Your trusted partner for firearms and ammunition in Euless, Texas. We are dedicated to providing the
+                    best products and services to responsible gun owners.</p>
+            </div>
+            <div class="f-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Handguns</a></li>
+                    <li><a href="#">Rifles</a></li>
+                    <li><a href="#">Ammunition</a></li>
+                </ul>
+            </div>
+            <div class="f-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Order Status</a></li>
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">Gunsmithing</a></li>
+                </ul>
+            </div>
+            <div class="f-col">
+                <h4>Contact Us</h4>
+                <div class="address-box">
+                    <p><i class="fa-solid fa-location-dot"></i> 1200 W Euless Blvd</p>
+                    <p>Euless, TX 76040, USA</p>
+                    <p style="margin-top:10px;"><i class="fa-solid fa-phone"></i> (817) 555-0123</p>
+                    <p><i class="fa-solid fa-envelope"></i> sales@gunammoshop.com</p>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; color: #555; padding-top: 20px; border-top: 1px solid #222; margin-top: 40px;">
+            <p>&copy; 2024 GunAmmoShop. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

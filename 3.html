@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAC-OPS PRO | Euless, TX Armory</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Rajdhani:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CORE VARIABLES --- */
+        :root {
+            --bg-dark: #050505;
+            --bg-panel: #121212;
+            --bg-light: #1e1e1e;
+
+            --accent-orange: #ff6b00;
+            /* High Visibility Orange */
+            --accent-red: #d90429;
+            /* Alert Red */
+            --accent-cyan: #00f0ff;
+            /* Tech Blue */
+
+            --text-white: #ffffff;
+            --text-gray: #b0b0b0;
+
+            --border-tech: #333;
+
+            --font-display: 'Black Ops One', cursive;
+            --font-tech: 'Rajdhani', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* --- ANIMATION UTILS --- */
+        .glitch-hover:hover {
+            animation: glitch-anim 0.3s infinite;
+            color: var(--accent-orange);
+        }
+
+        @keyframes glitch-anim {
+            0% {
+                transform: translate(0)
+            }
+
+            20% {
+                transform: translate(-2px, 2px)
+            }
+
+            40% {
+                transform: translate(-2px, -2px)
+            }
+
+            60% {
+                transform: translate(2px, 2px)
+            }
+
+            80% {
+                transform: translate(2px, -2px)
+            }
+
+            100% {
+                transform: translate(0)
+            }
+        }
+
+        /* --- TICKER TAPE (Breaking News) --- */
+        .news-ticker {
+            background: var(--accent-red);
+            color: white;
+            font-family: var(--font-tech);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            z-index: 1001;
+        }
+
+        .ticker-content {
+            display: inline-block;
+            padding-left: 100%;
+            animation: ticker 20s linear infinite;
+        }
+
+        @keyframes ticker {
+            0% {
+                transform: translate3d(0, 0, 0);
+            }
+
+            100% {
+                transform: translate3d(-100%, 0, 0);
+            }
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background: rgba(5, 5, 5, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-tech);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            color: var(--text-white);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand span {
+            color: var(--accent-orange);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-family: var(--font-tech);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-orange);
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-orange);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-icons i {
+            font-size: 1.2rem;
+            margin-left: 20px;
+            cursor: pointer;
+        }
+
+        .nav-icons i:hover {
+            color: var(--accent-orange);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 90vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Specific Gun/Soldier Image */
+            background: linear-gradient(90deg, #050505 0%, rgba(5, 5, 5, 0.7) 50%, rgba(5, 5, 5, 0.3) 100%),
+                url('https://images.unsplash.com/photo-1580894894513-541e068a3e2b?q=80&w=2074&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+            transform: scale(1.1);
+            animation: slowZoom 20s infinite alternate;
+        }
+
+        @keyframes slowZoom {
+            from {
+                transform: scale(1.1);
+            }
+
+            to {
+                transform: scale(1.2);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        .hero-badge {
+            background: var(--accent-orange);
+            color: black;
+            padding: 5px 15px;
+            font-family: var(--font-tech);
+            font-weight: 700;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 20px;
+            clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: 5rem;
+            line-height: 1;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 40px;
+            color: var(--text-gray);
+        }
+
+        .btn-hero {
+            background: transparent;
+            border: 2px solid var(--accent-orange);
+            color: var(--accent-orange);
+            padding: 15px 40px;
+            font-family: var(--font-tech);
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-orange);
+            transition: 0.4s;
+            z-index: -1;
+        }
+
+        .btn-hero:hover {
+            color: #000;
+        }
+
+        .btn-hero:hover::before {
+            left: 0;
+        }
+
+        /* --- CATEGORIES (GRID) --- */
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: var(--font-display);
+            font-size: 3rem;
+            margin-bottom: 60px;
+            color: var(--text-white);
+        }
+
+        .section-title span {
+            color: var(--accent-orange);
+        }
+
+        .category-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .cat-card {
+            height: 350px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border-tech);
+            cursor: pointer;
+        }
+
+        .cat-card img {
+            transition: transform 0.5s;
+            filter: brightness(0.6);
+        }
+
+        .cat-card:hover img {
+            transform: scale(1.1);
+            filter: brightness(0.9);
+        }
+
+        .cat-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(to top, #000 0%, transparent 100%);
+            z-index: 2;
+        }
+
+        .cat-info h3 {
+            font-family: var(--font-tech);
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            color: var(--accent-orange);
+        }
+
+        /* --- PRODUCT CARDS (TACTICAL STYLE) --- */
+        .product-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .p-card {
+            background: var(--bg-panel);
+            border: 1px solid var(--border-tech);
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .p-card:hover {
+            border-color: var(--accent-orange);
+            box-shadow: 0 0 20px rgba(255, 107, 0, 0.2);
+        }
+
+        .p-image {
+            height: 280px;
+            position: relative;
+            overflow: hidden;
+            background: #1a1a1a;
+        }
+
+        .p-image img {
+            transition: 0.5s;
+        }
+
+        .p-card:hover .p-image img {
+            transform: scale(1.1);
+        }
+
+        .badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--accent-red);
+            color: white;
+            font-family: var(--font-tech);
+            padding: 4px 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        .p-details {
+            padding: 20px;
+        }
+
+        .p-cat {
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .p-name {
+            font-family: var(--font-tech);
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-white);
+            margin-bottom: 10px;
+        }
+
+        .p-price {
+            font-family: var(--font-tech);
+            font-size: 1.5rem;
+            color: var(--accent-orange);
+            font-weight: 700;
+        }
+
+        .add-btn {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            background: var(--bg-light);
+            border: 1px solid var(--border-tech);
+            color: white;
+            font-family: var(--font-tech);
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .p-card:hover .add-btn {
+            background: var(--accent-orange);
+            color: black;
+            border-color: var(--accent-orange);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #000;
+            border-top: 2px solid var(--accent-orange);
+            padding: 80px 0 20px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .f-col h4 {
+            font-family: var(--font-display);
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            color: white;
+        }
+
+        .f-col p {
+            color: var(--text-gray);
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .f-col ul li {
+            margin-bottom: 12px;
+            color: var(--text-gray);
+            cursor: pointer;
+        }
+
+        .f-col ul li:hover {
+            color: var(--accent-orange);
+            padding-left: 5px;
+        }
+
+        .location-box {
+            background: var(--bg-light);
+            padding: 20px;
+            border-left: 3px solid var(--accent-orange);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #222;
+            color: #555;
+            font-size: 0.8rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media(max-width: 1024px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media(max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Breaking News Ticker -->
+    <div class="news-ticker">
+        <div class="ticker-content">
+            🔥 FLASH SALE: 20% OFF ALL AMMUNITION • NEW SHIPMENT OF GLOCK & SIG SAUER ARRIVED • FREE SHIPPING ON ORDERS
+            OVER $500 • VISIT US AT 1200 W EULESS BLVD, EULESS, TX •
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="brand">
+                <i class="fa-solid fa-crosshairs"></i>
+                TAC-OPS <span>PRO</span>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="glitch-hover">Home</a>
+                <a href="#" class="glitch-hover">Firearms</a>
+                <a href="#" class="glitch-hover">Ammo</a>
+                <a href="#" class="glitch-hover">Gear</a>
+                <a href="#" class="glitch-hover">Deals</a>
+            </div>
+            <div class="nav-icons">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <i class="fa-solid fa-user"></i>
+                <i class="fa-solid fa-cart-shopping"></i>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-bg"></div>
+            <div class="hero-content">
+                <div class="hero-badge">EST. 2024 // EULESS, TX</div>
+                <h1 class="glitch-hover">Precision.<br>Power.<br>Preparedness.</h1>
+                <p>Your premier destination for high-grade firearms, tactical ammunition, and defense accessories.
+                    Located in the heart of Texas.</p>
+                <button class="btn-hero">Enter Armory</button>
+            </div>
+        </section>
+
+        <!-- Categories -->
+        <section class="section-padding" style="background: #0a0a0a;">
+            <div class="section-title">
+                Loadout <span>Categories</span>
+            </div>
+            <div class="category-grid">
+                <div class="cat-card">
+                    <!-- Handgun Image -->
+                    <img src="https://gunammoshop.com/wp-content/uploads/2026/01/Rifles-Firearms.webp" alt="Handguns">
+                    <div class="cat-info">
+                        <h3>Handguns</h3>
+                    </div>
+                </div>
+                <div class="cat-card">
+                    <!-- Rifle Image -->
+                    <img src="https://gunammoshop.com/wp-content/uploads/2026/01/Rifles-Firearms.webp" alt="Rifles">
+                    <div class="cat-info">
+                        <h3>Rifles</h3>
+                    </div>
+                </div>
+                <div class="cat-card">
+                    <!-- Shotgun Image -->
+                    <img src="https://gunammoshop.com/wp-content/uploads/2026/01/Rifles-Firearms.webp" alt="Shotguns">
+                    <div class="cat-info">
+                        <h3>Shotguns</h3>
+                    </div>
+                </div>
+                <div class="cat-card">
+                    <!-- Ammo Image -->
+                    <img src="https://gunammoshop.com/wp-content/uploads/2026/01/Rifles-Firearms.webp" alt="Ammunition">
+                    <div class="cat-info">
+                        <h3>Ammunition</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products -->
+        <section class="section-padding">
+            <div class="section-title">
+                Hot <span>Arrivals</span>
+            </div>
+            <div class="product-grid">
+
+                <!-- Product 1 -->
+                <div class="p-card">
+                    <div class="p-image">
+                        <span class="badge">New</span>
+                        <!-- Glock Image -->
+                        <img src="https://gunammoshop.com/wp-content/uploads/2026/01/Rifles-Firearms.webp" alt="Glock">
+                    </div>
+                    <div class="p-details">
+                        <span class="p-cat">Handgun</span>
+                        <h3 class="p-name">Glock 19 Gen 5</h3>
+                        <div class="p-price">$599.00</div>
+                        <button class="add-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="p-card">
+                    <div class="p-image">
+                        <span class="badge">-15%</span>
+                        <!-- AR15 Image -->
+                        <img src="https://gunammoshop.com/wp-content/uploads/2026/01/Rifles-Firearms.webp" alt="AR15">
+                    </div>
+                    <div class="p-details">
+                        <span class="p-cat">Rifle</span>
+                        <h3 class="p-name">Daniel Defense DDM4</h3>
+                        <div class="p-price">$1,849.00</div>
+                        <button class="add-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="p-card">
+                    <div class="p-image">
+                        <!-- Ammo Box Image -->
+                        <img src="https://gunammoshop.com/wp-content/uploads/2026/01/Rifles-Firearms.webp"
+                            alt="9mm Ammo">
+                    </div>
+                    <div class="p-details">
+                        <span class="p-cat">Ammo</span>
+                        <h3 class="p-name">9mm Luger 124gr (1000rd)</h3>
+                        <div class="p-price">$349.99</div>
+                        <button class="add-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="p-card">
+                    <div class="p-image">
+                        <!-- Scope Image -->
+                        <img src="https://gunammoshop.com/wp-content/uploads/2026/01/Rifles-Firearms.webp" alt="Optics">
+                    </div>
+                    <div class="p-details">
+                        <span class="p-cat">Optics</span>
+                        <h3 class="p-name">Vortex Viper PST</h3>
+                        <div class="p-price">$699.00</div>
+                        <button class="add-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="f-col">
+                <div class="brand" style="margin-bottom: 20px;">
+                    <i class="fa-solid fa-crosshairs"></i> TAC-OPS <span>PRO</span>
+                </div>
+                <p>The ultimate resource for law enforcement, military personnel, and responsible citizens. We provide
+                    top-tier firearms and ammunition in Euless, Texas.</p>
+            </div>
+            <div class="f-col">
+                <h4>Armory</h4>
+                <ul>
+                    <li>Handguns</li>
+                    <li>Rifles</li>
+                    <li>Shotguns</li>
+                    <li>NFA Items</li>
+                </ul>
+            </div>
+            <div class="f-col">
+                <h4>Support</h4>
+                <ul>
+                    <li>Order Status</li>
+                    <li>Shipping & Returns</li>
+                    <li>FFL Transfer</li>
+                    <li>Contact Us</li>
+                </ul>
+            </div>
+            <div class="f-col">
+                <h4>Location</h4>
+                <div class="location-box">
+                    <p><i class="fa-solid fa-location-dot" style="color:var(--accent-orange)"></i> 1200 W Euless Blvd
+                    </p>
+                    <p>Euless, TX 76040, USA</p>
+                    <p style="margin-top: 10px;"><i class="fa-solid fa-phone" style="color:var(--accent-orange)"></i>
+                        (817) 555-0199</p>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 TAC-OPS PRO. All Rights Reserved. Must be 21+ to purchase.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
