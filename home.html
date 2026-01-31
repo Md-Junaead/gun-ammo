@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrimeArmory | Premier Quality Guns & Ammo</title>
+    <!-- Importing Google Fonts for a professional look -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Oswald:wght@500;700&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CSS Variables & Reset --- */
+        :root {
+            /* Color Palette: Professional, Tactical, Trustworthy */
+            --primary-color: #1a252f;
+            /* Dark Gunmetal */
+            --accent-color: #c0392b;
+            /* Alert/Action Red */
+            --highlight-color: #d4af37;
+            /* Gold/Brass for premium feel */
+            --text-dark: #333333;
+            --text-light: #f5f5f5;
+            --bg-light: #f8f9fa;
+            --bg-white: #ffffff;
+            --border-color: #e0e0e0;
+
+            /* Spacing & Layout */
+            --container-width: 1200px;
+            --header-height: 80px;
+            --radius: 4px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* --- Utility Classes --- */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            font-weight: 600;
+            text-transform: uppercase;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--text-light);
+            color: var(--text-light);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--text-light);
+            color: var(--primary-color);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 10px auto 0;
+        }
+
+        /* --- Header & Nav --- */
+        header {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .top-bar {
+            background-color: #111;
+            font-size: 0.8rem;
+            padding: 8px 0;
+            text-align: center;
+            color: #ccc;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: var(--header-height);
+        }
+
+        .logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--highlight-color);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-icon {
+            font-size: 1.2rem;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--accent-color);
+            color: white;
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            position: relative;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://picsum.photos/seed/soldier/1600/900');
+            background-size: cover;
+            background-position: center;
+            color: var(--text-light);
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero-subtitle {
+            color: var(--highlight-color);
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #ddd;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* --- Discount Banner --- */
+        .discount-banner {
+            background-color: var(--accent-color);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-weight: 600;
+        }
+
+        /* --- Categories --- */
+        .categories-section {
+            padding: 80px 0;
+            background-color: var(--bg-white);
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .category-card {
+            background-color: var(--bg-light);
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: var(--radius);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .category-card:hover {
+            background-color: var(--bg-white);
+            box-shadow: var(--shadow);
+            border-color: var(--highlight-color);
+            transform: translateY(-5px);
+        }
+
+        .category-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .category-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* --- New Arrivals --- */
+        .arrivals-section {
+            padding: 80px 0;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--bg-white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            box-shadow: var(--shadow-hover);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--highlight-color);
+            color: #000;
+            padding: 4px 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 2px;
+            z-index: 10;
+        }
+
+        .product-image {
+            height: 250px;
+            width: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-category {
+            font-size: 0.8rem;
+            color: #777;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .product-title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .current-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .add-to-cart-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            text-transform: uppercase;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: var(--highlight-color);
+            color: #000;
+        }
+
+        /* --- Service Guarantee --- */
+        .services-section {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 60px 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .service-item i {
+            font-size: 2.5rem;
+            color: var(--highlight-color);
+            margin-bottom: 20px;
+        }
+
+        .service-item h4 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .service-item p {
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        /* --- Contact/Newsletter --- */
+        .contact-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .newsletter-box {
+            background-color: var(--bg-white);
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #111;
+            color: #888;
+            padding: 60px 0 20px;
+            font-size: 0.9rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #333;
+        }
+
+        .footer-col h4 {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--highlight-color);
+        }
+
+        .social-icons a {
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+
+        .copyright {
+            text-align: center;
+        }
+
+        /* --- Responsive Media Queries --- */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .navbar {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+            }
+
+            .nav-links {
+                margin: 15px 0;
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Announcement Bar -->
+    <div class="top-bar">
+        FREE SHIPPING ON ALL ORDERS OVER $500 | USE CODE: TACTICAL10
+    </div>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container navbar">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-crosshairs"></i> PRIME ARMORY
+            </a>
+
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#new-arrivals">New Arrivals</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#deals">Deals</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <i class="fa-solid fa-magnifying-glass nav-icon" title="Search"></i>
+                <i class="fa-regular fa-user nav-icon" title="Account"></i>
+                <div class="nav-icon" title="Cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count">2</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-content">
+                <span class="hero-subtitle">EST. 2024</span>
+                <h1>DISCOVER PREMIER QUALITY GUNS, AMMOS, & ACCESSORIES</h1>
+                <p>Professional grade equipment for enthusiasts, law enforcement, and defense. Stock up on the latest
+                    arrivals with exclusive discounts.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary">Shop Now</button>
+                    <button class="btn btn-outline">View Catalog</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Discount/Promo Banner -->
+        <div class="discount-banner">
+            <i class="fa-solid fa-tag"></i> MEGA SALE: Up to 40% OFF on selected Benelli & Glock models this week only!
+        </div>
+
+        <!-- Categories Section -->
+        <section id="categories" class="categories-section">
+            <div class="container">
+                <h2 class="section-title">Our Categories</h2>
+                <div class="category-grid">
+                    <article class="category-card">
+                        <i class="fa-solid fa-gun category-icon"></i>
+                        <h3 class="category-title">Handguns</h3>
+                    </article>
+                    <article class="category-card">
+                        <i class="fa-solid fa-person-rifle category-icon"></i>
+                        <h3 class="category-title">Rifles</h3>
+                    </article>
+                    <article class="category-card">
+                        <i class="fa-solid fa-shield-halved category-icon"></i>
+                        <h3 class="category-title">Shotguns</h3>
+                    </article>
+                    <article class="category-card">
+                        <i class="fa-solid fa-bullseye category-icon"></i>
+                        <h3 class="category-title">Ammo</h3>
+                    </article>
+                    <article class="category-card">
+                        <i class="fa-solid fa-binoculars category-icon"></i>
+                        <h3 class="category-title">Optics</h3>
+                    </article>
+                    <article class="category-card">
+                        <i class="fa-solid fa-box-open category-icon"></i>
+                        <h3 class="category-title">Accessories</h3>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Arrivals Section -->
+        <section id="new-arrivals" class="arrivals-section">
+            <div class="container">
+                <h2 class="section-title">New Arrivals</h2>
+                <div class="product-grid">
+
+                    <!-- Product 1 -->
+                    <article class="product-card">
+                        <div class="product-badge">New</div>
+                        <img src="https://picsum.photos/seed/benelli1/400/300" alt="Benelli M4 Tactical"
+                            class="product-image">
+                        <div class="product-info">
+                            <span class="product-category">Shotguns</span>
+                            <h3 class="product-title">Benelli M4 Tactical</h3>
+                            <div class="product-price">
+                                <span class="current-price">$1,799.00</span>
+                            </div>
+                            <button class="add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </article>
+
+                    <!-- Product 2 -->
+                    <article class="product-card">
+                        <div class="product-badge" style="background-color: var(--accent-color); color: white;">Sale
+                        </div>
+                        <img src="https://picsum.photos/seed/benelli2/400/300" alt="Benelli ETHOS Cordoba"
+                            class="product-image">
+                        <div class="product-info">
+                            <span class="product-category">Shotguns</span>
+                            <h3 class="product-title">Benelli ETHOS Cordoba</h3>
+                            <div class="product-price">
+                                <span class="current-price">$1,899.00</span>
+                                <span class="old-price">$2,100.00</span>
+                            </div>
+                            <button class="add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </article>
+
+                    <!-- Product 3 -->
+                    <article class="product-card">
+                        <div class="product-badge">Hot</div>
+                        <img src="https://picsum.photos/seed/pistol9mm/400/300" alt="9mm Handgun" class="product-image">
+                        <div class="product-info">
+                            <span class="product-category">Handguns</span>
+                            <h3 class="product-title">Elite 9MM Tactical</h3>
+                            <div class="product-price">
+                                <span class="current-price">$650.00</span>
+                            </div>
+                            <button class="add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </article>
+
+                    <!-- Product 4 -->
+                    <article class="product-card">
+                        <img src="https://picsum.photos/seed/rifle556/400/300" alt="AR-15 Platform Rifle"
+                            class="product-image">
+                        <div class="product-info">
+                            <span class="product-category">Rifles</span>
+                            <h3 class="product-title">AR-15 Sporter II</h3>
+                            <div class="product-price">
+                                <span class="current-price">$950.00</span>
+                            </div>
+                            <button class="add-to-cart-btn">Add to Cart</button>
+                        </div>
+                    </article>
+
+                </div>
+
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="#" class="btn btn-outline"
+                        style="border-color: var(--primary-color); color: var(--primary-color);">View All Products</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service Guarantee / Trust Indicators -->
+        <section class="services-section">
+            <div class="container services-grid">
+                <div class="service-item">
+                    <i class="fa-solid fa-truck-fast"></i>
+                    <h4>Fast Shipping</h4>
+                    <p>Secure and discreet shipping directly to your FFL.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fa-solid fa-lock"></i>
+                    <h4>Secure Payment</h4>
+                    <p>100% secure payment processing with 256-bit encryption.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fa-solid fa-headset"></i>
+                    <h4>Expert Support</h4>
+                    <p>Dedicated support team available 24/7 for your inquiries.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fa-solid fa-shield-cat"></i>
+                    <h4>Quality Guarantee</h4>
+                    <p>All products inspected for premium quality assurance.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact / Newsletter -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="newsletter-box">
+                    <h2>Stay In The Loop</h2>
+                    <p>Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>
+                    <form class="newsletter-form" onsubmit="event.preventDefault();">
+                        <input type="email" placeholder="Enter your email address" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Prime Armory</h4>
+                    <p style="margin-bottom: 20px;">Your trusted source for premium firearms, ammunition, and tactical
+                        gear. Dedicated to serving responsible owners.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="#">Handguns</a></li>
+                        <li><a href="#">Rifles</a></li>
+                        <li><a href="#">Shotguns</a></li>
+                        <li><a href="#">Ammunition</a></li>
+                        <li><a href="#">Clearance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">Order Tracking</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                        <li><a href="#">FFL Locator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><i class="fa-solid fa-location-dot"></i> 123 Tactical Blvd, Denver, CO</li>
+                        <li><i class="fa-solid fa-phone"></i> (800) 555-0199</li>
+                        <li><i class="fa-solid fa-envelope"></i> support@primearmory.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 Prime Armory. All Rights Reserved. Must be 21+ to purchase.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
