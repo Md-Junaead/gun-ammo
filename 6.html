@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gun Ammo Shop | Premier Quality</title>
+
+    <!-- Fonts: Montserrat for Headers (Modern), Inter for Body (Clean) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- VARIABLES (Light Theme) --- */
+        :root {
+            --primary: #0f172a;
+            /* Deep Navy - Professional */
+            --accent: #dc2626;
+            /* Action Red - Urgency/Sale */
+            --secondary: #f8fafc;
+            /* Very Light Blue/Grey Background */
+            --white: #ffffff;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+
+            --radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--secondary);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .btn {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            width: 100%;
+            display: block;
+        }
+
+        /* --- LAYOUT UTILITIES --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- TOP BAR (Announcement) --- */
+        .top-bar {
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 10px 0;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- HEADER & NAV --- */
+        header {
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo i {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-icon {
+            font-size: 1.2rem;
+            cursor: pointer;
+            position: relative;
+            transition: 0.2s;
+        }
+
+        .nav-icon:hover {
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--accent);
+            color: white;
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+        }
+
+        /* --- HERO SECTION (From Image) --- */
+        .hero {
+            position: relative;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            color: white;
+            background-color: #000;
+            overflow: hidden;
+        }
+
+        /* Soldier Silhouette / Tactical Image */
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.4)), url('https://gunammoshop.com/wp-content/uploads/2023/06/front-view-soldiers-fighting-war-1-scaled.webp');
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #cbd5e1;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #b91c1c;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(220, 38, 38, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            margin-left: 10px;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* --- SECTION TITLES --- */
+        .section-header {
+            text-align: center;
+            margin: 80px 0 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .section-header span {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* --- CATEGORIES (Grid) --- */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            /* 6 Categories as per image */
+            gap: 20px;
+        }
+
+        .cat-card {
+            background: var(--white);
+            padding: 30px 15px;
+            text-align: center;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid transparent;
+            cursor: pointer;
+        }
+
+        .cat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent);
+        }
+
+        .cat-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .cat-card h4 {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .cat-card:hover .cat-icon {
+            color: var(--accent);
+        }
+
+        /* --- NEW ARRIVALS (Advanced Design) --- */
+        .products-section {
+            background: white;
+            padding: 60px 0;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            position: relative;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .product-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-5px);
+        }
+
+        /* Badge */
+        .badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--accent);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            z-index: 10;
+        }
+
+        /* Image Area */
+        .p-img-container {
+            height: 250px;
+            position: relative;
+            background: #f1f5f9;
+            overflow: hidden;
+        }
+
+        .p-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .p-img-container img {
+            transform: scale(1.1);
+        }
+
+        /* Icons Overlay (Eye, Cart, Heart) */
+        .p-overlay {
+            position: absolute;
+            bottom: -50px;
+            /* Hidden initially */
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .product-card:hover .p-overlay {
+            bottom: 0;
+        }
+
+        .action-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .action-icon:hover {
+            background: var(--accent);
+        }
+
+        .action-icon.liked {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* For heart */
+
+        /* Product Details */
+        .p-details {
+            padding: 20px;
+        }
+
+        .p-cat {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .p-title {
+            font-size: 1rem;
+            color: var(--text-dark);
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .p-price {
+            font-size: 1.2rem;
+            color: var(--accent);
+            font-weight: 800;
+        }
+
+        /* --- SERVICES SECTION --- */
+        .services-section {
+            padding: 80px 0;
+            background: var(--secondary);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .service-box {
+            background: white;
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .service-box i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .service-box h5 {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .service-box p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--primary);
+            color: #cbd5e1;
+            padding: 80px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 50px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-col p {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .address-box i {
+            color: var(--accent);
+            width: 20px;
+        }
+
+        .address-item {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .payment-icons {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        /* --- TOAST & MODAL --- */
+        .toast {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 15px 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            transform: translateX(150%);
+            transition: 0.4s ease;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast i {
+            color: var(--accent);
+        }
+
+        /* Responsive */
+        @media(max-width: 992px) {
+            .category-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media(max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Discount Bar -->
+    <div class="top-bar">
+        🔥 GET 10% OFF YOUR FIRST ORDER - USE CODE: GUNSHOP10 🔥
+    </div>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-crosshairs"></i> Gun Ammo Shop
+            </a>
+
+            <nav class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">Handguns</a>
+                <a href="#">Rifles</a>
+                <a href="#">Ammo</a>
+                <a href="#">Accessories</a>
+                <a href="#">Contact</a>
+            </nav>
+
+            <div class="nav-icons">
+                <i class="fa-solid fa-magnifying-glass nav-icon"></i>
+                <i class="fa-regular fa-heart nav-icon"></i>
+                <div class="nav-icon">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="container hero-content">
+            <h1>Discover Premier Quality <span>Guns, Ammos, & Accessories</span></h1>
+            <p>Your trusted partner for tactical gear and precision firearms. Serving Euless, TX and the entire nation.
+            </p>
+            <div>
+                <button class="btn btn-primary"
+                    onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">Shop Now</button>
+                <button class="btn btn-outline">Learn More</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="container">
+        <div class="section-header">
+            <span>Browse By</span>
+            <h2>Our Categories</h2>
+        </div>
+        <div class="category-grid">
+            <div class="cat-card">
+                <i class="fa-solid fa-gun cat-icon"></i>
+                <h4>Handguns</h4>
+            </div>
+            <div class="cat-card">
+                <i class="fa-solid fa-person-rifle cat-icon"></i>
+                <h4>Rifles</h4>
+            </div>
+            <div class="cat-card">
+                <i class="fa-solid fa-shield-cat cat-icon"></i>
+                <h4>Shotguns</h4>
+            </div>
+            <div class="cat-card">
+                <i class="fa-solid fa-bullseye cat-icon"></i>
+                <h4>Ammo</h4>
+            </div>
+            <div class="cat-card">
+                <i class="fa-solid fa-boxes-stacked cat-icon"></i>
+                <h4>Mags</h4>
+            </div>
+            <div class="cat-card">
+                <i class="fa-solid fa-vest cat-icon"></i>
+                <h4>Accessories</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Arrivals (Advanced Product Cards) -->
+    <section id="products" class="products-section">
+        <div class="container">
+            <div class="section-header">
+                <span>Just Landed</span>
+                <h2>New Arrivals</h2>
+            </div>
+
+            <div class="product-grid">
+                <!-- Product 1: Benelli -->
+                <div class="product-card">
+                    <div class="badge">HOT</div>
+                    <div class="p-img-container">
+                        <img src="https://gunammoshop.com/wp-content/uploads/2023/06/front-view-soldiers-fighting-war-1-scaled.webp"
+                            alt="Benelli Shotgun">
+                        <!-- Interaction Overlay -->
+                        <div class="p-overlay">
+                            <div class="action-icon" title="Quick View" onclick="openModal()"><i
+                                    class="fa-regular fa-eye"></i></div>
+                            <div class="action-icon" title="Add to Cart" onclick="addToCart()"><i
+                                    class="fa-solid fa-cart-plus"></i></div>
+                            <div class="action-icon" title="Wishlist" onclick="toggleHeart(this)"><i
+                                    class="fa-regular fa-heart"></i></div>
+                        </div>
+                    </div>
+                    <div class="p-details">
+                        <span class="p-cat">Shotguns</span>
+                        <h3 class="p-title">Benelli M4 Tactical 12 Gauge</h3>
+                        <div class="p-price">$1,799.00</div>
+                    </div>
+                </div>
+
+                <!-- Product 2: Rifle -->
+                <div class="product-card">
+                    <div class="p-img-container">
+                        <img src="https://gunammoshop.com/wp-content/uploads/2023/06/front-view-soldiers-fighting-war-1-scaled.webp"
+                            alt="AR15 Rifle">
+                        <div class="p-overlay">
+                            <div class="action-icon" onclick="openModal()"><i class="fa-regular fa-eye"></i></div>
+                            <div class="action-icon" onclick="addToCart()"><i class="fa-solid fa-cart-plus"></i></div>
+                            <div class="action-icon" onclick="toggleHeart(this)"><i class="fa-regular fa-heart"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-details">
+                        <span class="p-cat">Rifles</span>
+                        <h3 class="p-title">Daniel Defense DDM4 V7</h3>
+                        <div class="p-price">$1,899.00</div>
+                    </div>
+                </div>
+
+                <!-- Product 3: Pistol -->
+                <div class="product-card">
+                    <div class="badge" style="background:var(--text-dark)">NEW</div>
+                    <div class="p-img-container">
+                        <img src="https://gunammoshop.com/wp-content/uploads/2023/06/front-view-soldiers-fighting-war-1-scaled.webp"
+                            alt="Pistol">
+                        <div class="p-overlay">
+                            <div class="action-icon" onclick="openModal()"><i class="fa-regular fa-eye"></i></div>
+                            <div class="action-icon" onclick="addToCart()"><i class="fa-solid fa-cart-plus"></i></div>
+                            <div class="action-icon" onclick="toggleHeart(this)"><i class="fa-regular fa-heart"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-details">
+                        <span class="p-cat">Handguns</span>
+                        <h3 class="p-title">Glock 19 Gen 5 MOS</h3>
+                        <div class="p-price">$599.00</div>
+                    </div>
+                </div>
+
+                <!-- Product 4: Optics -->
+                <div class="product-card">
+                    <div class="p-img-container">
+                        <img src="https://gunammoshop.com/wp-content/uploads/2023/06/front-view-soldiers-fighting-war-1-scaled.webp"
+                            alt="Optic Scope">
+                        <div class="p-overlay">
+                            <div class="action-icon" onclick="openModal()"><i class="fa-regular fa-eye"></i></div>
+                            <div class="action-icon" onclick="addToCart()"><i class="fa-solid fa-cart-plus"></i></div>
+                            <div class="action-icon" onclick="toggleHeart(this)"><i class="fa-regular fa-heart"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-details">
+                        <span class="p-cat">Optics</span>
+                        <h3 class="p-title">Trijicon ACOG 4x32 Scope</h3>
+                        <div class="p-price">$1,200.00</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Guarantee -->
+    <section class="services-section">
+        <div class="container">
+            <div class="services-grid">
+                <div class="service-box">
+                    <i class="fa-solid fa-truck-fast"></i>
+                    <h5>Free Shipping</h5>
+                    <p>On all orders over $500</p>
+                </div>
+                <div class="service-box">
+                    <i class="fa-solid fa-rotate-left"></i>
+                    <h5>30 Days Return</h5>
+                    <p>Money back guarantee</p>
+                </div>
+                <div class="service-box">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <h5>Secure Payment</h5>
+                    <p>100% Protected Payments</p>
+                </div>
+                <div class="service-box">
+                    <i class="fa-solid fa-headset"></i>
+                    <h5>24/7 Support</h5>
+                    <p>Dedicated support team</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="color:white; margin-bottom: 15px;">
+                        <i class="fa-solid fa-crosshairs" style="color:var(--accent)"></i> Gun Ammo Shop
+                    </div>
+                    <p>Your premier destination for guns and ammunition in Euless, Texas. We pride ourselves on quality
+                        service and competitive pricing.</p>
+                    <div class="payment-icons">
+                        <i class="fa-brands fa-cc-visa"></i>
+                        <i class="fa-brands fa-cc-mastercard"></i>
+                        <i class="fa-brands fa-cc-amex"></i>
+                        <i class="fa-brands fa-cc-paypal"></i>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">Order History</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Handguns</a></li>
+                        <li><a href="#">Rifles</a></li>
+                        <li><a href="#">Shotguns</a></li>
+                        <li><a href="#">Ammunition</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <div class="address-box">
+                        <div class="address-item">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>1200 W Euless Blvd<br>Euless, TX 76040, USA</span>
+                        </div>
+                        <div class="address-item">
+                            <i class="fa-solid fa-phone"></i>
+                            <span>(817) 555-0123</span>
+                        </div>
+                        <div class="address-item">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>sales@gunammoshop.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; font-size: 0.8rem; color: #64748b;">
+                &copy; 2024 Gun Ammo Shop. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fa-solid fa-circle-check"></i>
+        <span>Added to Cart Successfully!</span>
+    </div>
+
+    <!-- Simple Quick View Modal -->
+    <div id="quickViewModal"
+        style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:3000; align-items:center; justify-content:center;">
+        <div style="background:white; width:90%; max-width:600px; padding:30px; border-radius:8px; position:relative;">
+            <span onclick="closeModal()"
+                style="position:absolute; top:15px; right:20px; cursor:pointer; font-size:1.5rem;">&times;</span>
+            <h2 style="color:var(--primary); margin-bottom:10px;">Quick View</h2>
+            <p style="color:#666;">This is a preview of the product details. In a full app, this would show
+                specifications, stock status, and larger images.</p>
+            <div style="margin-top:20px; display:flex; gap:20px;">
+                <img src="https://gunammoshop.com/wp-content/uploads/2023/06/front-view-soldiers-fighting-war-1-scaled.webp"
+                    style="width:100px; height:100px; object-fit:cover;">
+                <div>
+                    <h3 style="font-size:1.2rem;">Benelli M4 Tactical</h3>
+                    <h3 style="color:var(--accent); font-weight:700;">$1,799.00</h3>
+                    <button class="btn btn-primary" style="margin-top:10px;" onclick="closeModal()">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sticky Header
+        window.addEventListener('scroll', function () {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = "0 4px 6px -1px rgba(0, 0, 0, 0.1)";
+            } else {
+                header.style.boxShadow = "none";
+            }
+        });
+
+        // Cart Function
+        function addToCart() {
+            const toast = document.getElementById('toast');
+            const badge = document.querySelector('.cart-count');
+
+            // Animation
+            toast.classList.add('show');
+            setTimeout(() => { toast.classList.remove('show'); }, 3000);
+
+            // Count Update
+            let count = parseInt(badge.innerText);
+            badge.innerText = count + 1;
+        }
+
+        // Wishlist Heart Toggle
+        function toggleHeart(element) {
+            element.classList.toggle('liked');
+            const icon = element.querySelector('i');
+            if (element.classList.contains('liked')) {
+                icon.classList.remove('fa-regular');
+                icon.classList.add('fa-solid');
+            } else {
+                icon.classList.remove('fa-solid');
+                icon.classList.add('fa-regular');
+            }
+        }
+
+        // Modal Functions
+        function openModal() {
+            document.getElementById('quickViewModal').style.display = 'flex';
+        }
+        function closeModal() {
+            document.getElementById('quickViewModal').style.display = 'none';
+        }
+
+        // Close modal on outside click
+        document.getElementById('quickViewModal').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+
+</html>

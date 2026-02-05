@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gun Ammo Shop - About Us</title>
+
+    <!-- Google Fonts: Teko (Tactical/Condensed) and Inter (Clean Reading) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Teko:wght@500;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #00e5ff;
+            /* Neon Cyan for High Impact */
+            --primary-hover: #00b8cc;
+            --text-white: #ffffff;
+            --text-gray: #d1d5db;
+            --bg-overlay: rgba(0, 0, 0, 0.75);
+            /* Dark tint for readability */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #050505;
+            color: var(--text-white);
+        }
+
+        /* --- Main Hero Section --- */
+        .hero-section {
+            position: relative;
+            height: 90vh;
+            /* Takes up almost the full screen height */
+            min-height: 600px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Background Image */
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Using a specific seed for ammo/weapon looking images */
+            background-image: url('https://picsum.photos/seed/gunsammo99/1920/1080');
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+            /* Subtle zoom animation for eye-catching effect */
+            animation: zoomEffect 20s infinite alternate;
+        }
+
+        /* Dark Overlay */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.8) 50%, rgba(0, 0, 0, 0.4) 100%);
+            z-index: 2;
+        }
+
+        /* Content Container */
+        .content-wrapper {
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
+            padding: 40px;
+            margin-left: 5%;
+            /* Positioned slightly to the left */
+
+            /* Initial state for animation */
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease-out forwards;
+            animation-delay: 0.5s;
+        }
+
+        /* Border decoration line */
+        .content-wrapper::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 60px;
+            width: 4px;
+            background-color: var(--primary-color);
+        }
+
+        /* Typography */
+        h2 {
+            font-family: 'Teko', sans-serif;
+            font-size: 5rem;
+            /* Very large and bold */
+            line-height: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+            color: var(--text-white);
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        p {
+            font-size: 1.25rem;
+            line-height: 1.7;
+            color: var(--text-gray);
+            margin-bottom: 40px;
+            max-width: 650px;
+            font-weight: 400;
+        }
+
+        /* Button Design */
+        .btn-shop {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--primary-color);
+            font-family: 'Teko', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            padding: 10px 40px;
+            border: 2px solid var(--primary-color);
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-shop:hover {
+            background-color: var(--primary-color);
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
+        }
+
+        /* --- Animations --- */
+        @keyframes zoomEffect {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.1);
+            }
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .hero-section {
+                height: auto;
+                padding: 100px 0;
+                align-items: flex-start;
+            }
+
+            .hero-bg {
+                background-position: center center;
+            }
+
+            .content-wrapper {
+                margin-left: 0;
+                text-align: left;
+                padding: 30px;
+                background: rgba(0, 0, 0, 0.6);
+                /* Extra backdrop on mobile for readability */
+                border-left: 4px solid var(--primary-color);
+            }
+
+            .content-wrapper::before {
+                display: none;
+                /* Remove the decorative line on mobile, use border instead */
+            }
+
+            h2 {
+                font-size: 3.5rem;
+            }
+
+            p {
+                font-size: 1.1rem;
+            }
+
+            .btn-shop {
+                font-size: 1.5rem;
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="hero-section">
+        <!-- Background Image Layer -->
+        <div class="hero-bg"></div>
+
+        <!-- Dark Overlay Layer -->
+        <div class="hero-overlay"></div>
+
+        <!-- Text Content Layer -->
+        <div class="content-wrapper">
+            <h2>About Us</h2>
+
+            <p>
+                Introducing Gun Ammo Shop, the greatest online gun store in the nation for premium weapons, ammo, and
+                accessories. With our unrivaled quality weapons, friendly customer service, and commitment to provide
+                you with the best guns and accessories, we promise an excellent online buying experience.
+            </p>
+
+            <a href="#" class="btn-shop">Shop Now</a>
+        </div>
+    </section>
+
+</body>
+
+</html>

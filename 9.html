@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us Design</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Rajdhani:wght@400;500;600;700&family=Roboto:wght@300;400&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- TAC-OPS VARIABLES --- */
+        :root {
+            --bg-dark: #050505;
+            --bg-section: #0a0a0a;
+            --bg-panel: #121212;
+            --accent-orange: #ff6b00;
+            --text-white: #ffffff;
+            --text-gray: #b0b0b0;
+
+            --font-display: 'Black Ops One', cursive;
+            --font-tech: 'Rajdhani', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            margin: 0;
+            font-family: var(--font-body);
+        }
+
+        /* --- SECTION LAYOUT --- */
+        .about-section {
+            background-color: var(--bg-section);
+            padding: 100px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle Grid Background for Modern Feel */
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(255, 107, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 107, 0, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.5;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        /* --- LEFT COLUMN (TEXT) --- */
+        .about-content {
+            flex: 1;
+        }
+
+        .subtitle {
+            color: var(--accent-orange);
+            font-family: var(--font-tech);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .about-title {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin: 0 0 25px 0;
+            text-transform: uppercase;
+            color: var(--text-white);
+        }
+
+        /* Decorative line under title */
+        .about-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-orange);
+            margin-top: 15px;
+            transform: skewX(-20deg);
+            /* Tech look */
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-gray);
+            margin-bottom: 35px;
+            font-weight: 300;
+        }
+
+        /* Modern Button */
+        .btn-modern {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: transparent;
+            color: var(--accent-orange);
+            border: 2px solid var(--accent-orange);
+            padding: 15px 35px;
+            font-family: var(--font-tech);
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+        }
+
+        .btn-modern:hover {
+            background: var(--accent-orange);
+            color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 107, 0, 0.2);
+        }
+
+        /* --- RIGHT COLUMN (IMAGE) --- */
+        .about-image-wrapper {
+            flex: 1;
+            position: relative;
+        }
+
+        .image-box {
+            position: relative;
+            z-index: 2;
+            border: 1px solid var(--border-tech, #333);
+            padding: 10px;
+            background: var(--bg-panel);
+        }
+
+        .image-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: grayscale(20%) contrast(110%);
+            /* Slightly cinematic */
+            transition: 0.5s;
+        }
+
+        .image-box:hover img {
+            filter: grayscale(0%) contrast(100%);
+        }
+
+        /* Decorative "Tech" Frame Behind Image */
+        .image-box::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--accent-orange);
+            z-index: -1;
+            transition: 0.3s;
+        }
+
+        .image-box:hover::before {
+            top: -20px;
+            left: -20px;
+        }
+
+        /* Floating Badge */
+        .floating-badge {
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            background: var(--bg-panel);
+            border: 1px solid var(--accent-orange);
+            padding: 15px 25px;
+            z-index: 3;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .floating-badge span {
+            display: block;
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--accent-orange);
+            line-height: 1;
+        }
+
+        .floating-badge small {
+            font-family: var(--font-tech);
+            color: var(--text-white);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media(max-width: 900px) {
+            .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-title::after {
+                margin: 15px auto 0 auto;
+            }
+
+            .image-box {
+                max-width: 500px;
+                margin-top: 40px;
+            }
+
+            .floating-badge {
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: -30px;
+                width: max-content;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="about-section">
+        <div class="container">
+            <!-- Text Content -->
+            <div class="about-content">
+                <span class="subtitle">// WHO WE ARE</span>
+                <h2 class="about-title">About <span style="color: var(--accent-orange);">Us</span></h2>
+                <p class="about-text">
+                    Introducing Gun Ammo Shop, the greatest online gun store in the nation for premium weapons, ammo,
+                    and accessories. With our unrivaled quality weapons, friendly customer service, and commitment to
+                    provide you with the best guns and accessories, we promise an excellent online buying experience.
+                </p>
+                <a href="#" class="btn-modern">
+                    Shop Now <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Image Content -->
+            <div class="about-image-wrapper">
+                <div class="image-box">
+                    <!-- Placeholder Image (Replace with your real image) -->
+                    <img src="https://gunammoshop.com/wp-content/uploads/2024/11/cccccf.jpg" alt="Tactical Gear">
+                </div>
+
+                <!-- Floating Badge (Decorative) -->
+                <div class="floating-badge">
+                    <span>100%</span>
+                    <small>Authentic</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>

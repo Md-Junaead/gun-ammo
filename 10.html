@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - TAC-OPS PRO</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Rajdhani:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- TAC-OPS PRO CORE VARIABLES --- */
+        :root {
+            --bg-dark: #050505;
+            --bg-section: #0a0a0a;
+            --bg-panel: #121212;
+            --accent-orange: #ff6b00;
+            --text-white: #ffffff;
+            --text-gray: #b0b0b0;
+
+            --font-display: 'Black Ops One', cursive;
+            --font-tech: 'Rajdhani', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: var(--font-display);
+            text-transform: uppercase;
+        }
+
+        p {
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* --- UTILITIES --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        /* --- 1. PAGE HERO --- */
+        .page-hero {
+            background: linear-gradient(to bottom, rgba(5, 5, 5, 0.8), var(--bg-dark)),
+                url('https://images.unsplash.com/photo-1517242027093-829574d40853?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            border-bottom: 2px solid var(--accent-orange);
+        }
+
+        .page-hero h1 {
+            font-size: 4rem;
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(255, 107, 0, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 107, 0, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        /* --- 2. GRID BACKGROUND UTILS --- */
+        .bg-grid {
+            position: relative;
+        }
+
+        .bg-grid::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(255, 107, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 107, 0, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* --- 3. WHO WE ARE (Split Layout) --- */
+        .split-section {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .split-content {
+            flex: 1;
+        }
+
+        .split-image {
+            flex: 1;
+            position: relative;
+            z-index: 2;
+        }
+
+        .subtitle {
+            color: var(--accent-orange);
+            font-family: var(--font-tech);
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-orange);
+            margin-top: 15px;
+            transform: skewX(-20deg);
+        }
+
+        /* Image Box & Floating Badge (Same as Home Page) */
+        .image-box {
+            background-color: var(--bg-panel);
+            border: 1px solid #333;
+            padding: 10px;
+            position: relative;
+            overflow: visible;
+        }
+
+        .image-box img {
+            width: 100%;
+            filter: grayscale(20%) contrast(110%);
+            transition: 0.5s;
+        }
+
+        .image-box:hover img {
+            filter: grayscale(0%);
+        }
+
+        .image-box::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--accent-orange);
+            z-index: -1;
+            transition: 0.3s;
+        }
+
+        .image-box:hover::before {
+            top: -20px;
+            left: -20px;
+        }
+
+        .floating-badge {
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            background: var(--bg-panel);
+            border: 1px solid var(--accent-orange);
+            padding: 15px 25px;
+            z-index: 5;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .floating-badge span {
+            color: var(--accent-orange);
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        .floating-badge small {
+            display: block;
+            color: white;
+            font-family: var(--font-tech);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            margin-top: 5px;
+        }
+
+        /* --- 4. CORE VALUES GRID --- */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            position: relative;
+            z-index: 2;
+            margin-top: 50px;
+        }
+
+        .value-card {
+            background: var(--bg-panel);
+            border: 1px solid #333;
+            padding: 40px 20px;
+            text-align: center;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-card:hover {
+            border-color: var(--accent-orange);
+            transform: translateY(-5px);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            color: var(--accent-orange);
+            margin-bottom: 20px;
+        }
+
+        .value-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .value-card p {
+            font-size: 0.9rem;
+        }
+
+        /* --- 5. BUTTONS --- */
+        .btn-modern {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            color: var(--accent-orange);
+            border: 2px solid var(--accent-orange);
+            padding: 12px 30px;
+            font-family: var(--font-tech);
+            font-weight: 700;
+            text-transform: uppercase;
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        .btn-modern:hover {
+            background: var(--accent-orange);
+            color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 107, 0, 0.2);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media(max-width: 768px) {
+            .split-section {
+                flex-direction: column;
+            }
+
+            .page-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .image-box {
+                margin-top: 30px;
+            }
+
+            .floating-badge {
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: -30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 1. HERO SECTION -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>About Us</h1>
+        </div>
+    </section>
+
+    <!-- 2. WHO WE ARE -->
+    <section class="section-padding bg-grid">
+        <div class="container">
+            <div class="split-section">
+                <!-- Text Content -->
+                <div class="split-content">
+                    <span class="subtitle">// Our Story</span>
+                    <h2 class="section-title">We Are <span style="color: var(--accent-orange);">TAC-OPS</span></h2>
+                    <p>
+                        Introducing Gun Ammo Shop, the greatest online gun store in the nation for premium weapons,
+                        ammo, and accessories. With our unrivaled quality weapons, friendly customer service, and
+                        commitment to provide you with the best guns and accessories, we promise an excellent online
+                        buying experience.
+                    </p>
+                    <p style="margin-top: 15px;">
+                        Founded with a mission to serve law enforcement, military personnel, and responsible citizens,
+                        we pride ourselves on precision, power, and preparedness. Every product in our inventory is
+                        hand-selected for performance and reliability.
+                    </p>
+                    <a href="#" class="btn-modern">Shop Our Inventory <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Image Content -->
+                <div class="split-image">
+                    <div class="image-box">
+                        <img src="https://images.unsplash.com/photo-1580900760238-943a8eb70c6c?q=80&w=1000&auto=format&fit=crop"
+                            alt="Tactical Gear">
+                        <div class="floating-badge">
+                            <span>EST.</span>
+                            <small>2024</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. CORE VALUES -->
+    <section class="section-padding" style="background-color: var(--bg-section);">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 50px;">
+                <span class="subtitle">// Our Principles</span>
+                <h2 class="section-title" style="margin-bottom: 0;">Why Choose Us</h2>
+            </div>
+
+            <div class="values-grid">
+                <!-- Card 1 -->
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Premium Quality</h3>
+                    <p>We only stock top-tier firearms and ammunition from the world's most trusted manufacturers.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-shipping-fast"></i></div>
+                    <h3>Fast & Secure</h3>
+                    <p>Discrete packaging and lightning-fast shipping to ensure your gear arrives safely and on time.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-headset"></i></div>
+                    <h3>Expert Support</h3>
+                    <p>Our team of experts is here to help you find exactly what you need for your specific mission.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
