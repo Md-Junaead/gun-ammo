@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layaway Policy | Gun Ammo Shop</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Rajdhani:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- TAC-OPS PRO VARIABLES (MATCHES HOME/ABOUT) --- */
+        :root {
+            --bg-dark: #050505;
+            --bg-section: #0a0a0a;
+            --bg-panel: #121212;
+            --accent-orange: #ff6b00;
+            --text-white: #ffffff;
+            --text-gray: #b0b0b0;
+
+            --font-display: 'Black Ops One', cursive;
+            --font-tech: 'Rajdhani', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: var(--font-display);
+            text-transform: uppercase;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        .container {
+            max-width: 1000px;
+            /* Slightly narrower for better reading */
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* --- UTILITIES --- */
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-orange {
+            color: var(--accent-orange);
+        }
+
+        /* Grid Background Overlay */
+        .bg-grid {
+            position: relative;
+            background-color: var(--bg-section);
+        }
+
+        .bg-grid::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(255, 107, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 107, 0, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background: rgba(5, 5, 5, 0.9);
+            border-bottom: 1px solid #333;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .brand {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .brand span {
+            color: var(--accent-orange);
+        }
+
+        /* --- HERO --- */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            text-align: center;
+            border-bottom: 2px solid var(--accent-orange);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        /* --- POLICY CARDS DESIGN --- */
+        .policy-intro {
+            max-width: 800px;
+            margin: 0 auto 60px auto;
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            border-bottom: 1px solid #333;
+            padding-bottom: 40px;
+        }
+
+        .policy-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .policy-card {
+            background: var(--bg-panel);
+            border: 1px solid #333;
+            padding: 30px;
+            display: flex;
+            gap: 25px;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .policy-card:hover {
+            border-color: var(--accent-orange);
+            transform: translateX(10px);
+            /* Slide effect */
+            box-shadow: -5px 5px 20px rgba(255, 107, 0, 0.1);
+        }
+
+        /* The Number Badge */
+        .policy-badge {
+            flex-shrink: 0;
+            width: 60px;
+            height: 60px;
+            background: var(--bg-dark);
+            border: 2px solid var(--accent-orange);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--accent-orange);
+            /* Cut Corner Shape */
+            clip-path: polygon(15px 0, 100% 0, 100% 100%, 0 100%, 0 15px);
+        }
+
+        .policy-content {
+            flex: 1;
+        }
+
+        .policy-content h3 {
+            font-family: var(--font-tech);
+            font-size: 1.5rem;
+            color: var(--text-white);
+            margin-bottom: 10px;
+            border-bottom: 1px solid #222;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .policy-content p {
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #000;
+            border-top: 2px solid var(--accent-orange);
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .policy-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .policy-badge {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+                margin: 0 auto 15px auto;
+            }
+
+            .policy-content h3 {
+                border-bottom: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="nav-container">
+            <div class="brand">GUN AMMO <span>SHOP</span></div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <h1>LAYAWAY POLICY</h1>
+            <p style="font-family: var(--font-tech); color: #ccc;">// Secure your gear today. Pay over time.</p>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <section class="section-padding bg-grid">
+        <div class="container">
+
+            <!-- Intro Text -->
+            <div class="policy-intro">
+                <p>
+                    At Gunammoshop.com, we’re pleased to offer our layaway service for in-store purchases. Our layaway
+                    policy ensures a convenient and flexible way for you to acquire the products you desire. Here are
+                    the details of our layaway policy:
+                </p>
+            </div>
+
+            <!-- Policy List -->
+            <div class="policy-list">
+
+                <!-- Item 1 -->
+                <div class="policy-card">
+                    <div class="policy-badge">01</div>
+                    <div class="policy-content">
+                        <h3>Initiation</h3>
+                        <p>To start a layaway, we require a modest <strong>10% down payment</strong> on each new layaway
+                            agreement.</p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="policy-card">
+                    <div class="policy-badge">02</div>
+                    <div class="policy-content">
+                        <h3>Payment Schedule</h3>
+                        <p>Your first payment must be made within <strong>30 days</strong> of the previous payment to
+                            keep your layaway active and ensure your chosen items are reserved for you.</p>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="policy-card">
+                    <div class="policy-badge">03</div>
+                    <div class="policy-content">
+                        <h3>Completion</h3>
+                        <p>All merchandise placed on layaway must be fully paid for and picked up within <strong>90
+                                days</strong> from the original layaway date. This timeframe allows you ample
+                            opportunity to make your payments and secure your products.</p>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="policy-card">
+                    <div class="policy-badge">04</div>
+                    <div class="policy-content">
+                        <h3>Service Charges</h3>
+                        <p>Should you fail to complete your layaway purchase within the 90-day period or choose to
+                            cancel the layaway at any time, Gunammoshop.com will apply a service charge of
+                            <strong>$10.00</strong>. This fee covers the handling, storage, and record-keeping expenses
+                            associated with the layaway agreement.</p>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="policy-card">
+                    <div class="policy-badge">05</div>
+                    <div class="policy-content">
+                        <h3>Firearm Layaways</h3>
+                        <p>For firearms placed on layaway, they can be held for a maximum of <strong>60 days</strong>.
+                            The necessary paperwork should be finalized after the final payment for the firearm has been
+                            made. In the event that a customer is not approved to purchase the firearm, Gunammoshop.com
+                            will assess a service charge of <strong>$10.00</strong>.</p>
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="policy-card">
+                    <div class="policy-badge">06</div>
+                    <div class="policy-content">
+                        <h3>Limitations</h3>
+                        <p>Each customer is allowed to put a maximum of <strong>2 guns</strong> on layaway. Please note
+                            that clearance items are not eligible for layaway and may be purchased through regular
+                            means.</p>
+                    </div>
+                </div>
+
+                <!-- Item 7 -->
+                <div class="policy-card">
+                    <div class="policy-badge">07</div>
+                    <div class="policy-content">
+                        <h3>Policy Adjustments</h3>
+                        <p>Gunammoshop.com reserves the right to modify our layaway policy at any time to better serve
+                            our customers. We encourage you to check our website or inquire in-store for the most
+                            up-to-date information on our layaway terms and conditions.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Outro -->
+            <div
+                style="margin-top: 60px; text-align: center; padding: 30px; border: 1px solid #333; background: var(--bg-panel);">
+                <h3 style="margin-bottom: 15px; color: var(--accent-orange);">NEED HELP?</h3>
+                <p style="margin-bottom: 20px;">Our layaway service is designed to make your shopping experience more
+                    convenient and accessible. If you have any questions or need further assistance, please don’t
+                    hesitate to contact us.</p>
+                <a href="#"
+                    style="display: inline-block; padding: 10px 30px; border: 1px solid var(--accent-orange); color: var(--accent-orange); font-family: var(--font-tech); text-transform: uppercase; font-weight: 700; transition: 0.3s;">Contact
+                    Support</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p style="color: #555; font-size: 0.9rem;">&copy; 2024 TAC-OPS PRO. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

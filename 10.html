@@ -4,31 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - TAC-OPS PRO</title>
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Rajdhani:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap"
-        rel="stylesheet">
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>About Us | Gun Ammo Shop</title>
 
     <style>
-        /* --- TAC-OPS PRO CORE VARIABLES --- */
-        :root {
-            --bg-dark: #050505;
-            --bg-section: #0a0a0a;
-            --bg-panel: #121212;
-            --accent-orange: #ff6b00;
-            --text-white: #ffffff;
-            --text-gray: #b0b0b0;
-
-            --font-display: 'Black Ops One', cursive;
-            --font-tech: 'Rajdhani', sans-serif;
-            --font-body: 'Roboto', sans-serif;
-        }
-
+        /* RESET */
         * {
             margin: 0;
             padding: 0;
@@ -36,298 +15,171 @@
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-white);
-            font-family: var(--font-body);
-            overflow-x: hidden;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0f0f0f;
+            color: #ffffff;
+            line-height: 1.6;
         }
 
-        h1,
-        h2,
-        h3,
-        h4 {
-            font-family: var(--font-display);
-            text-transform: uppercase;
+        /* HEADER */
+        header {
+            background: #1b1b1b;
+            padding: 15px 40px;
+            border-bottom: 1px solid #333;
         }
 
-        p {
-            color: var(--text-gray);
-            line-height: 1.7;
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        a {
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: #fff;
             text-decoration: none;
-            color: inherit;
-            transition: 0.3s;
+            font-size: 14px;
+            font-weight: 600;
         }
 
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
-        /* --- UTILITIES --- */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .section-padding {
-            padding: 100px 0;
-        }
-
-        /* --- 1. PAGE HERO --- */
-        .page-hero {
-            background: linear-gradient(to bottom, rgba(5, 5, 5, 0.8), var(--bg-dark)),
-                url('https://images.unsplash.com/photo-1517242027093-829574d40853?q=80&w=2000&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            height: 50vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        /* HERO */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)),
+                url("https://via.placeholder.com/1920x700") center/cover no-repeat;
             text-align: center;
-            position: relative;
-            border-bottom: 2px solid var(--accent-orange);
+            padding: 120px 20px;
         }
 
-        .page-hero h1 {
-            font-size: 4rem;
-            color: white;
-            position: relative;
-            z-index: 2;
+        .hero h1 {
+            color: #00aaff;
+            font-size: 48px;
+            font-weight: 900;
         }
 
-        .page-hero::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: linear-gradient(rgba(255, 107, 0, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 107, 0, 0.1) 1px, transparent 1px);
-            background-size: 40px 40px;
-            opacity: 0.3;
-            pointer-events: none;
+        .hero p {
+            max-width: 900px;
+            margin: 20px auto;
+            font-size: 16px;
         }
 
-        /* --- 2. GRID BACKGROUND UTILS --- */
-        .bg-grid {
-            position: relative;
-        }
-
-        .bg-grid::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: linear-gradient(rgba(255, 107, 0, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 107, 0, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        /* --- 3. WHO WE ARE (Split Layout) --- */
-        .split-section {
-            display: flex;
-            align-items: center;
-            gap: 60px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .split-content {
-            flex: 1;
-        }
-
-        .split-image {
-            flex: 1;
-            position: relative;
-            z-index: 2;
-        }
-
-        .subtitle {
-            color: var(--accent-orange);
-            font-family: var(--font-tech);
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .section-title {
-            font-size: 3rem;
-            margin-bottom: 25px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: var(--accent-orange);
-            margin-top: 15px;
-            transform: skewX(-20deg);
-        }
-
-        /* Image Box & Floating Badge (Same as Home Page) */
-        .image-box {
-            background-color: var(--bg-panel);
-            border: 1px solid #333;
-            padding: 10px;
-            position: relative;
-            overflow: visible;
-        }
-
-        .image-box img {
-            width: 100%;
-            filter: grayscale(20%) contrast(110%);
-            transition: 0.5s;
-        }
-
-        .image-box:hover img {
-            filter: grayscale(0%);
-        }
-
-        .image-box::before {
-            content: '';
-            position: absolute;
-            top: -15px;
-            left: -15px;
-            width: 100%;
-            height: 100%;
-            border: 2px solid var(--accent-orange);
-            z-index: -1;
-            transition: 0.3s;
-        }
-
-        .image-box:hover::before {
-            top: -20px;
-            left: -20px;
-        }
-
-        .floating-badge {
-            position: absolute;
-            bottom: -20px;
-            left: -20px;
-            background: var(--bg-panel);
-            border: 1px solid var(--accent-orange);
-            padding: 15px 25px;
-            z-index: 5;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .floating-badge span {
-            color: var(--accent-orange);
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            line-height: 1;
-        }
-
-        .floating-badge small {
-            display: block;
-            color: white;
-            font-family: var(--font-tech);
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            margin-top: 5px;
-        }
-
-        /* --- 4. CORE VALUES GRID --- */
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            position: relative;
-            z-index: 2;
-            margin-top: 50px;
-        }
-
-        .value-card {
-            background: var(--bg-panel);
-            border: 1px solid #333;
-            padding: 40px 20px;
+        /* SECTION */
+        .section {
+            padding: 80px 40px;
+            background: #ffffff;
+            color: #000;
             text-align: center;
-            transition: 0.3s;
-            position: relative;
-            overflow: hidden;
         }
 
-        .value-card:hover {
-            border-color: var(--accent-orange);
-            transform: translateY(-5px);
-        }
-
-        .value-icon {
-            font-size: 3rem;
-            color: var(--accent-orange);
+        .section h2 {
+            font-size: 32px;
+            font-weight: 900;
             margin-bottom: 20px;
         }
 
-        .value-card h3 {
-            font-size: 1.5rem;
+        .section h3 {
+            font-size: 22px;
             margin-bottom: 15px;
-            color: white;
         }
 
-        .value-card p {
-            font-size: 0.9rem;
+        .section p {
+            max-width: 1100px;
+            margin: 0 auto 20px;
+            font-size: 15px;
         }
 
-        /* --- 5. BUTTONS --- */
-        .btn-modern {
-            display: inline-flex;
+        /* DARK SECTION */
+        .dark {
+            background: #0f0f0f;
+            color: #ffffff;
+        }
+
+        /* TWO COLUMN */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
             align-items: center;
-            gap: 10px;
-            background: transparent;
-            color: var(--accent-orange);
-            border: 2px solid var(--accent-orange);
-            padding: 12px 30px;
-            font-family: var(--font-tech);
-            font-weight: 700;
-            text-transform: uppercase;
-            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
-            transition: 0.3s;
-            margin-top: 20px;
+            max-width: 1200px;
+            margin: auto;
         }
 
-        .btn-modern:hover {
-            background: var(--accent-orange);
-            color: #000;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 107, 0, 0.2);
+        .two-column img {
+            width: 100%;
+            border-radius: 5px;
         }
 
-        /* --- RESPONSIVE --- */
-        @media(max-width: 768px) {
-            .split-section {
-                flex-direction: column;
-            }
+        /* FEATURES */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: auto;
+        }
 
-            .page-hero h1 {
-                font-size: 2.5rem;
-            }
+        .feature-box {
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 5px;
+        }
 
-            .values-grid {
+        .feature-box h4 {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        /* CTA */
+        .cta {
+            background: #111;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 36px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #0a2540;
+            padding: 60px 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        footer h4 {
+            margin-bottom: 15px;
+        }
+
+        footer p,
+        footer a {
+            font-size: 14px;
+            color: #ddd;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+
+            .two-column,
+            .features,
+            .footer-grid {
                 grid-template-columns: 1fr;
             }
 
-            .image-box {
-                margin-top: 30px;
-            }
-
-            .floating-badge {
-                left: 50%;
-                transform: translateX(-50%);
-                bottom: -30px;
+            .hero h1 {
+                font-size: 36px;
             }
         }
     </style>
@@ -335,83 +187,204 @@
 
 <body>
 
-    <!-- 1. HERO SECTION -->
-    <section class="page-hero">
-        <div class="container">
-            <h1>About Us</h1>
+    <header>
+        <nav>
+            <div><strong>GUN AMMO SHOP</strong></div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Cart</a></li>
+                <li><a href="#">Sitemap</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>ABOUT US</h1>
+        <p>
+            We've been dedicated to providing a platform where firearm enthusiasts can access the latest news,
+            product reviews, and information on matters that impact their community.
+        </p>
+    </section>
+
+    <section class="section">
+        <h3>Our History</h3>
+        <h2>WE ARE A Gun Ammo Shop</h2>
+
+        <p>
+            Welcome to Gunammoshop.com! Since 2011, we've been dedicated to providing a platform where firearm
+            enthusiasts can access the latest news, product reviews, and information on matters that impact their
+            community.
+            Our community attracts gun owners of all backgrounds, from protectors and outdoor enthusiasts to sports and
+            social shooters.
+            What unites us is our commitment to defending what matters most to us.
+        </p>
+
+        <p><strong>"We are your trusted Gun Ammo Shop."</strong></p>
+
+        <p>
+            Our nation's Founding Fathers, as articulated in the Bill of Rights, placed the right to keep and bear arms
+            second only to the cherished freedom of speech.
+            Visionaries like Thomas Jefferson, John Adams, George Mason, Samuel Adams, and many more passionately worked
+            towards establishing a new nation, free from the oppression of the old world, governed by principles where
+            the government serves the people rather than subduing them.
+        </p>
+
+        <p>
+            As Americans, we have the privilege of living in a developed society that fosters self-growth through
+            education and open discourse.
+            As citizens, we carry the responsibility to challenge ideas and confront issues that affect our rights and
+            those of others when threatened by the state.
+            At Gunammoshop.com, our mission is simple: to offer the finest firearms, ammunition, and outdoor gear in the
+            shooting industry at competitive prices, all while delivering unmatched customer service.
+        </p>
+    </section>
+
+    <section class="section dark">
+        <div class="two-column">
+            <div>
+                <h2>WHO ARE WE?</h2>
+                <p>
+                    Gun Suppliers is more than just a firearms retailer; we are a community of enthusiasts with a deep
+                    passion for the outdoors.
+                    Our team of experts is committed to working closely with you to create customized packages tailored
+                    to enhance your next adventure.
+                    Whether you're a first-time firearm owner, an experienced hunter, or a member of the military or law
+                    enforcement, we are here to provide the best online shopping experience possible.
+                </p>
+
+                <p>
+                    Gun Suppliers take pride in offering exceptional customer service and timely deliveries, and we are
+                    honored to hold the title of Elite Member, a recognition for excellence in customer support.
+                </p>
+            </div>
+
+            <img src="https://via.placeholder.com/600x400" alt="Weapons Collection">
         </div>
     </section>
 
-    <!-- 2. WHO WE ARE -->
-    <section class="section-padding bg-grid">
-        <div class="container">
-            <div class="split-section">
-                <!-- Text Content -->
-                <div class="split-content">
-                    <span class="subtitle">// Our Story</span>
-                    <h2 class="section-title">We Are <span style="color: var(--accent-orange);">TAC-OPS</span></h2>
-                    <p>
-                        Introducing Gun Ammo Shop, the greatest online gun store in the nation for premium weapons,
-                        ammo, and accessories. With our unrivaled quality weapons, friendly customer service, and
-                        commitment to provide you with the best guns and accessories, we promise an excellent online
-                        buying experience.
-                    </p>
-                    <p style="margin-top: 15px;">
-                        Founded with a mission to serve law enforcement, military personnel, and responsible citizens,
-                        we pride ourselves on precision, power, and preparedness. Every product in our inventory is
-                        hand-selected for performance and reliability.
-                    </p>
-                    <a href="#" class="btn-modern">Shop Our Inventory <i class="fas fa-arrow-right"></i></a>
-                </div>
+    <section class="section">
+        <h2>WHY CHOOSE OUR STORE?</h2>
 
-                <!-- Image Content -->
-                <div class="split-image">
-                    <div class="image-box">
-                        <img src="https://images.unsplash.com/photo-1580900760238-943a8eb70c6c?q=80&w=1000&auto=format&fit=crop"
-                            alt="Tactical Gear">
-                        <div class="floating-badge">
-                            <span>EST.</span>
-                            <small>2024</small>
-                        </div>
-                    </div>
-                </div>
+        <p>
+            At our establishment, we take pride in offering an unparalleled array of products, exceeding 200 distinct
+            items, and constantly expanding our selection with the latest, in-demand merchandise.
+            We stand out with our industry-leading pricing, a flat-rate shipping option for firearms, and swift
+            deliveries spanning all 50 states and worldwide destinations.
+            Experience the convenience of 24/7 online shopping from the comfort of your home, thanks to our
+            user-friendly website, which showcases live, real-time inventory updates and ensures speedy order
+            processing.
+        </p>
+
+        <p>
+            Our commitment to exceptional service extends far beyond the point of product delivery.
+            We extend a warm invitation to become a part of our vibrant community, where you can both share and acquire
+            valuable insights about our product range and the industry at large.
+            Join our newsletter to engage in enriching discussions and gain access to exclusive Gunammoshop.com deals.
+            Should you have any inquiries or concerns, don't hesitate to reach out to us.
+        </p>
+
+        <p>
+            Over the years, we've engaged with thousands of gun shop owners, manufacturers, and organizations, and we
+            soon realized that the online gun buying process was in need of an overhaul.
+            It involved too much complexity, and an often convoluted checkout process.
+            In addition to being your go-to source for 2A news and reviews, we evolved into an online marketplace that
+            has disrupted the firearms industry by creating an innovative and simplified buying experience.
+            But don't take our word for it; see for yourself!
+        </p>
+    </section>
+
+    <section class="section dark">
+        <div class="features">
+            <div class="feature-box">
+                <h4>WE'RE ALL ABOUT SIMPLICITY</h4>
+                <p>
+                    Seeking a streamlined and hassle-free destination for your online firearms purchase? Look no
+                    further!
+                    Gunammoshop.com has dedicated significant effort to streamline what can often be a convoluted
+                    process.
+                    Our extensive product range comes with competitive pricing that you'll appreciate.
+                    We handle all the paperwork for you, so you can spend less time dealing with the hassles of gun
+                    buying and more time enjoying your shooting experience.
+                </p>
+            </div>
+
+            <div class="feature-box">
+                <h4>WE'RE LOCAL</h4>
+                <p>
+                    Gunammoshop.com has a shop-local mindset, which means we prioritize supporting local gun store
+                    owners.
+                    We collaborate closely with a vast network of FFLs (Federal Firearms Licensees) across the country
+                    to ensure secure and efficient transactions that support local inventories and contribute to our
+                    nation's gun stores and communities.
+                </p>
+            </div>
+
+            <div class="feature-box">
+                <h4>WE'RE SUPPORTIVE</h4>
+                <p>
+                    Our team of Rangemasters brings back something that has been missing in the gun buying process for
+                    too long—genuine service.
+                    When you buy from us, it's more than just acquiring a gun; it's a commitment that we'll be there to
+                    assist you, no matter the issue.
+                    Our team comprises lifelong gun enthusiasts and experts who understand the buying process, the
+                    firearms we sell, and the responsibility of gun ownership.
+                </p>
+            </div>
+
+            <div class="feature-box">
+                <h4>WE LOVE GUNS</h4>
+                <p>
+                    While we offer the simplest online gun buying experience, we also take pride in our own firearm
+                    collections and believe that guns should be celebrated for what they are.
+                    Our staff consists of gun owners and enthusiasts from all corners of the country, with years of
+                    experience in firearms.
+                    We are hunters, range enthusiasts, tactical experts, concealed carriers, and much more.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- 3. CORE VALUES -->
-    <section class="section-padding" style="background-color: var(--bg-section);">
-        <div class="container">
-            <div style="text-align: center; margin-bottom: 50px;">
-                <span class="subtitle">// Our Principles</span>
-                <h2 class="section-title" style="margin-bottom: 0;">Why Choose Us</h2>
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h4>ABOUT US</h4>
+                <p>At Gunammoshop.com, we're dedicated to providing premium firearms and ammunition.</p>
             </div>
 
-            <div class="values-grid">
-                <!-- Card 1 -->
-                <div class="value-card">
-                    <div class="value-icon"><i class="fas fa-shield-alt"></i></div>
-                    <h3>Premium Quality</h3>
-                    <p>We only stock top-tier firearms and ammunition from the world's most trusted manufacturers.</p>
-                </div>
+            <div>
+                <h4>CONTACT US</h4>
+                <p>Address: 1200 W Euless Blvd<br>Euless, TX 76040, USA</p>
+                <p>Tel: +1 (801) 332-2120</p>
+                <p>Email: support@gunammoshop.com</p>
+            </div>
 
-                <!-- Card 2 -->
-                <div class="value-card">
-                    <div class="value-icon"><i class="fas fa-shipping-fast"></i></div>
-                    <h3>Fast & Secure</h3>
-                    <p>Discrete packaging and lightning-fast shipping to ensure your gear arrives safely and on time.
-                    </p>
-                </div>
+            <div>
+                <h4>QUICK LINKS</h4>
+                <a href="#">About Us</a>
+                <a href="#">Affiliate Program</a>
+                <a href="#">Commitment to Giving Back</a>
+                <a href="#">FAQs</a>
+                <a href="#">Firearms Safety Rules</a>
+                <a href="#">Orders</a>
+                <a href="#">Proof of Payment</a>
+                <a href="#">Request a Refund</a>
+                <a href="#">Blog</a>
+                <a href="#">Sitemap</a>
+            </div>
 
-                <!-- Card 3 -->
-                <div class="value-card">
-                    <div class="value-icon"><i class="fas fa-headset"></i></div>
-                    <h3>Expert Support</h3>
-                    <p>Our team of experts is here to help you find exactly what you need for your specific mission.</p>
-                </div>
+            <div>
+                <h4>NEWSLETTER NOW</h4>
+                <p>Stay informed and be part of our community. Join our newsletter.</p>
             </div>
         </div>
-    </section>
+
+        <p style="text-align:center; margin-top:40px; font-size:13px;">
+            © Copyright 2026 GunAmmoShop ® USA | All Rights Reserved.
+        </p>
+    </footer>
 
 </body>
 
