@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Affiliate Program | Gun Ammo Shop</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Rajdhani:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- TAC-OPS PRO VARIABLES --- */
+        :root {
+            --bg-dark: #050505;
+            --bg-section: #0a0a0a;
+            --bg-panel: #121212;
+            --accent-orange: #ff6b00;
+            --text-white: #ffffff;
+            --text-gray: #b0b0b0;
+
+            --font-display: 'Black Ops One', cursive;
+            --font-tech: 'Rajdhani', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: var(--font-display);
+            text-transform: uppercase;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* --- UTILITIES --- */
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-orange {
+            color: var(--accent-orange);
+        }
+
+        /* Grid Background Overlay */
+        .bg-grid {
+            position: relative;
+            background-color: var(--bg-section);
+        }
+
+        .bg-grid::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(255, 107, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 107, 0, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background: rgba(5, 5, 5, 0.9);
+            border-bottom: 1px solid #333;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .brand {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .brand span {
+            color: var(--accent-orange);
+        }
+
+        /* --- HERO --- */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1550092150-0b75684d7e86?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            text-align: center;
+            border-bottom: 2px solid var(--accent-orange);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-family: var(--font-tech);
+            color: #ccc;
+            letter-spacing: 2px;
+        }
+
+        /* --- INTRO --- */
+        .intro-box {
+            max-width: 800px;
+            margin: 0 auto 60px auto;
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        /* --- POLICY CARDS (Reused Design) --- */
+        .policy-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .policy-card {
+            background: var(--bg-panel);
+            border: 1px solid #333;
+            padding: 30px;
+            display: flex;
+            gap: 25px;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .policy-card:hover {
+            border-color: var(--accent-orange);
+            transform: translateX(10px);
+            box-shadow: -5px 5px 20px rgba(255, 107, 0, 0.1);
+        }
+
+        /* The Number Badge */
+        .policy-badge {
+            flex-shrink: 0;
+            width: 60px;
+            height: 60px;
+            background: var(--bg-dark);
+            border: 2px solid var(--accent-orange);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--accent-orange);
+            clip-path: polygon(15px 0, 100% 0, 100% 100%, 0 100%, 0 15px);
+        }
+
+        .policy-content {
+            flex: 1;
+        }
+
+        .policy-content h3 {
+            font-family: var(--font-tech);
+            font-size: 1.5rem;
+            color: var(--text-white);
+            margin-bottom: 10px;
+            border-bottom: 1px solid #222;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .policy-content p {
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+
+        /* --- CONTACT BOX --- */
+        .contact-box {
+            background: var(--bg-panel);
+            border: 1px solid var(--accent-orange);
+            padding: 40px;
+            text-align: center;
+            margin-top: 60px;
+            position: relative;
+        }
+
+        /* Tech corners for contact box */
+        .contact-box::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            width: 20px;
+            height: 20px;
+            border-top: 2px solid var(--accent-orange);
+            border-left: 2px solid var(--accent-orange);
+        }
+
+        .contact-box::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            right: -2px;
+            width: 20px;
+            height: 20px;
+            border-bottom: 2px solid var(--accent-orange);
+            border-right: 2px solid var(--accent-orange);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #000;
+            border-top: 2px solid var(--accent-orange);
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .policy-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .policy-badge {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+                margin: 0 auto 15px auto;
+            }
+
+            .policy-content h3 {
+                border-bottom: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="nav-container">
+            <div class="brand">GUN AMMO <span>SHOP</span></div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <h1>AFFILIATE PROGRAM</h1>
+            <p>// PARTNER WITH THE BEST</p>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <section class="section-padding bg-grid">
+        <div class="container">
+
+            <!-- Intro Text -->
+            <div class="intro-box">
+                <p>
+                    At Gunammoshop.com, we are dedicated to providing our customers with the ultimate online firearm
+                    purchasing experience. Our paramount goal is to ensure 100% customer satisfaction with every firearm
+                    acquisition. We've meticulously curated our website to offer a wealth of valuable information,
+                    enabling you to make well-informed decisions.
+                </p>
+                <br>
+                <p>
+                    Our Rangemasters possess a wealth of knowledge derived from years of experience. Whether you're a
+                    novice firearm enthusiast or a seasoned shooter, our Rangemasters are equipped to address any
+                    inquiries you may have, ensuring that you receive the best value for your investment.
+                </p>
+            </div>
+
+            <!-- Header for List -->
+            <div style="text-align: center; margin-bottom: 40px;">
+                <span class="text-orange"
+                    style="font-family: var(--font-tech); font-weight: 700; letter-spacing: 2px;">// BENEFITS</span>
+                <h2 style="font-size: 2.5rem; margin-top: 10px;">Advantages of Joining Us</h2>
+            </div>
+
+            <!-- List Cards -->
+            <div class="policy-list">
+
+                <!-- Card 1 -->
+                <div class="policy-card">
+                    <div class="policy-badge">01</div>
+                    <div class="policy-content">
+                        <h3>Competitive Commission</h3>
+                        <p>We offer highly competitive commission rates. Please contact us below for the most up-to-date
+                            rates and start earning top dollar on every referral.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="policy-card">
+                    <div class="policy-badge">02</div>
+                    <div class="policy-content">
+                        <h3>Generous Cookie Duration</h3>
+                        <p>Benefit from a generous 30-day cookie duration. This means if a visitor clicks your link
+                            today, you still get credit for the sale up to a month later.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="policy-card">
+                    <div class="policy-badge">03</div>
+                    <div class="policy-content">
+                        <h3>Premier Destination</h3>
+                        <p>Gunammoshop.com is the premier destination for online firearm purchases. Partnering with us
+                            means aligning your brand with a trusted industry leader.</p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="policy-card">
+                    <div class="policy-badge">04</div>
+                    <div class="policy-content">
+                        <h3>High Conversion Rates</h3>
+                        <p>We boast exceptionally high conversion rates. Our user-friendly interface and expert
+                            recommendations turn visitors into buyers efficiently.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Enrollment / Contact Section -->
+            <div class="contact-box">
+                <h3 style="margin-bottom: 20px; color: var(--accent-orange);">READY TO ENROLL?</h3>
+                <p style="margin-bottom: 30px; color: var(--text-gray);">
+                    To enroll in the Gunammoshop.com Affiliate Program, we invite you to reach out to us directly.
+                </p>
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 20px;">
+                    <div>
+                        <strong style="display: block; color: white;">Contact Person</strong>
+                        <span style="color: var(--text-gray);">Will Altherr</span>
+                    </div>
+                    <div>
+                        <strong style="display: block; color: white;">Email</strong>
+                        <a href="mailto:support@gunammoshop.com" class="text-orange">support@gunammoshop.com</a>
+                    </div>
+                    <div>
+                        <strong style="display: block; color: white;">Phone</strong>
+                        <a href="tel:+18019232240" class="text-orange">+1(801) 923-2240</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p style="color: #555; font-size: 0.9rem;">&copy; 2024 TAC-OPS PRO. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

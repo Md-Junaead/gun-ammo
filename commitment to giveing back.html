@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commitment to Giving Back | Gun Ammo Shop</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Rajdhani:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- TAC-OPS PRO VARIABLES --- */
+        :root {
+            --bg-dark: #050505;
+            --bg-section: #0a0a0a;
+            --bg-panel: #121212;
+            --bg-panel-hover: #151515;
+            /* Slightly lighter for expanded content */
+            --accent-orange: #ff6b00;
+            --text-white: #ffffff;
+            --text-gray: #b0b0b0;
+
+            --font-display: 'Black Ops One', cursive;
+            --font-tech: 'Rajdhani', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: var(--font-display);
+            text-transform: uppercase;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* --- UTILITIES --- */
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-orange {
+            color: var(--accent-orange);
+        }
+
+        /* Grid Background Overlay */
+        .bg-grid {
+            position: relative;
+            background-color: var(--bg-section);
+        }
+
+        .bg-grid::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(255, 107, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 107, 0, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* --- BUTTONS --- */
+        .btn-outline {
+            display: inline-block;
+            border: 1px solid var(--accent-orange);
+            color: var(--accent-orange);
+            padding: 10px 25px;
+            font-family: var(--font-tech);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            margin-top: 20px;
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+        }
+
+        .btn-outline:hover {
+            background: var(--accent-orange);
+            color: #000;
+            text-decoration: none !important;
+        }
+
+        /* --- ACCORDION STYLING (The Hide/Show Mechanism) --- */
+        details {
+            background: var(--bg-panel);
+            border: 1px solid #333;
+            margin-bottom: 20px;
+            transition: 0.3s;
+            overflow: hidden;
+        }
+
+        details[open] {
+            border-color: var(--accent-orange);
+            box-shadow: 0 0 15px rgba(255, 107, 0, 0.1);
+        }
+
+        /* The Summary (The Visible Header) */
+        summary {
+            list-style: none;
+            /* Hide default triangle */
+            padding: 25px 30px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+        /* The Plus/Minus Icon */
+        summary::after {
+            content: '+';
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--accent-orange);
+            position: absolute;
+            right: 30px;
+            transition: 0.3s;
+        }
+
+        details[open] summary::after {
+            content: '-';
+            transform: rotate(180deg);
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        /* The Content (The Hidden Part) */
+        .org-content {
+            background: var(--bg-panel-hover);
+            padding: 0 30px 30px 30px;
+            border-top: 1px solid #222;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- SPECIFIC LAYOUT --- */
+        .org-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .org-icon {
+            width: 50px;
+            height: 50px;
+            background: #1e1e1e;
+            border: 2px solid var(--accent-orange);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--accent-orange);
+            /* Tech Shape */
+            clip-path: polygon(20% 0, 100% 0, 100% 80%, 80% 100%, 0 100%, 0 20%);
+        }
+
+        .org-title {
+            font-size: 1.4rem;
+            color: white;
+        }
+
+        .org-subtitle {
+            font-family: var(--font-tech);
+            color: var(--accent-orange);
+            font-size: 1rem;
+            margin-top: 5px;
+            display: block;
+        }
+
+        /* --- HERO --- */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1509365465985-25d11c17e812?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            padding: 120px 0;
+            text-align: center;
+            border-bottom: 2px solid var(--accent-orange);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-family: var(--font-tech);
+            color: #ccc;
+            letter-spacing: 2px;
+            font-size: 1.1rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .org-title {
+                font-size: 1.2rem;
+            }
+
+            summary::after {
+                right: 20px;
+            }
+
+            .org-content {
+                padding: 0 20px 20px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <h1>Commitment<br>To Giving Back</h1>
+            <p>// DEFENDING RIGHTS. SUPPORTING COMMUNITIES.</p>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <section class="section-padding bg-grid">
+        <div class="container">
+
+            <!-- Intro -->
+            <div class="text-center"
+                style="max-width: 900px; margin: 0 auto 60px auto; color: var(--text-gray); line-height: 1.8;">
+                <p>
+                    Our journey began with a vision to create a space where firearm enthusiasts and gun lovers could
+                    access news, product reviews, and the latest information on topics that affect their community.
+                    Today, as a leading authority in the industry, we are dedicated to giving back to our community
+                    while tirelessly defending our rights as gun owners. Gunammoshop.com takes pride in supporting the
+                    following organizations, uniting our efforts to make an even greater impact in our community!
+                </p>
+            </div>
+
+            <!-- ORGANIZATION 1: SAF -->
+            <details>
+                <summary>
+                    <div class="org-header">
+                        <div class="org-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div>
+                            <h3 class="org-title">The Second Amendment Foundation</h3>
+                            <span class="org-subtitle">About The SAF</span>
+                        </div>
+                    </div>
+                </summary>
+                <div class="org-content">
+                    <p>
+                        The Second Amendment Foundation is on a mission to foster a deeper understanding of our
+                        Constitutional heritage, emphasizing the right to privately own and possess firearms. With a
+                        legacy of pioneering innovative defense strategies for the right to keep and bear arms, SAF
+                        continues to lead through publications, public education initiatives, and legal actions.
+                    </p>
+                    <p>
+                        Gunammoshop.com proudly collaborates with SAF to counter anti-gun groups and the gun ban agenda.
+                        If you wish to make a tax-deductible donation directly to SAF and contribute to the preservation
+                        of our rights, learn more here.
+                    </p>
+                    <a href="#" class="btn-outline">Learn More Here</a>
+                </div>
+            </details>
+
+            <!-- ORGANIZATION 2: Project ChildSafe -->
+            <details>
+                <summary>
+                    <div class="org-header">
+                        <div class="org-icon"><i class="fas fa-child"></i></div>
+                        <div>
+                            <h3 class="org-title">Project ChildSafe</h3>
+                            <span class="org-subtitle">About Project ChildSafe</span>
+                        </div>
+                    </div>
+                </summary>
+                <div class="org-content">
+                    <p>
+                        Project ChildSafe, a program affiliated with the National Shooting Sports Foundation, is deeply
+                        devoted to advancing firearm safety and education. Their unwavering dedication to genuine
+                        firearm safety is evident in their extensive efforts to provide safety education and distribute
+                        free firearm safety kits to communities all across the United States. Thanks to this initiative,
+                        local law enforcement agencies have distributed an impressive 40 million gun locks and counting.
+                    </p>
+                    <p>
+                        If you’d like to receive a free Project ChildSafe Safety Kit, which includes a cable-style gun
+                        lock and safety instructions, get yours here.
+                    </p>
+                    <a href="#" class="btn-outline">Get Yours Here</a>
+                </div>
+            </details>
+
+            <!-- ORGANIZATION 3: Firearms Policy Coalition -->
+            <details>
+                <summary>
+                    <div class="org-header">
+                        <div class="org-icon"><i class="fas fa-flag-usa"></i></div>
+                        <div>
+                            <h3 class="org-title">Firearms Policy Coalition</h3>
+                            <span class="org-subtitle">About Firearms Policy Coalition</span>
+                        </div>
+                    </div>
+                </summary>
+                <div class="org-content">
+                    <p>
+                        Firearms Policy Coalition is a nonprofit organization tirelessly defending the People’s
+                        unrestricted access to and exercise of the Natural Rights necessary for a free world. Their
+                        focus encompasses the Right to Keep and Bear Arms and related issues, including freedom of
+                        speech, due process, protection against unlawful searches and seizures, separation of powers,
+                        asset forfeitures, privacy, encryption, and limited government.
+                    </p>
+                    <p>
+                        Gunammoshop.com proudly partners with FPC to champion individual, natural, human, and
+                        Constitutional rights through their litigation efforts. If you are interested in supporting the
+                        fight against government overreach, please consider making a donation.
+                    </p>
+                    <a href="#" class="btn-outline">Make A Donation</a>
+                </div>
+            </details>
+
+            <!-- ORGANIZATION 4: American Suppressor Association -->
+            <details>
+                <summary>
+                    <div class="org-header">
+                        <div class="org-icon"><i class="fas fa-deaf"></i></div>
+                        <div>
+                            <h3 class="org-title">American Suppressor Association</h3>
+                            <span class="org-subtitle">About American Suppressor Association</span>
+                        </div>
+                    </div>
+                </summary>
+                <div class="org-content">
+                    <p>
+                        The American Suppressor Association has one mission: to advocate for your suppressor rights.
+                        They serve as the boots on the ground in the battle to legalize and deregulate suppressors,
+                        defending against the anti-suppressor factions that seek to ban them. No other entity has
+                        invested more time and resources into suppressors than ASA.
+                    </p>
+                    <p>
+                        Since its inception in 2011, ASA has played a pivotal role in legalizing suppressor ownership in
+                        3 states, allowing suppressor hunting in 19 states, and thwarting attempts to ban suppressors in
+                        2 states. Their relentless commitment to your Second Amendment right to own and use suppressors
+                        remains unwavering.
+                    </p>
+                    <p>
+                        Join ASA today and strengthen their voice in the fight!
+                    </p>
+                    <a href="#" class="btn-outline">Join ASA Today</a>
+                </div>
+            </details>
+
+        </div>
+    </section>
+
+</body>
+
+</html>
